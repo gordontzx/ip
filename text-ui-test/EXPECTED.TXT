@@ -121,7 +121,7 @@ Error! Usage: delete TASK_INDEX
 : --------------------------------------------------
 Noted. I've removed the task:
   [T][ ] read book
-You now have 4 tasks in the list
+You now have 4 tasks in the list.
 --------------------------------------------------
 : --------------------------------------------------
 1.[T][ ] borrow book

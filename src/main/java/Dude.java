@@ -97,7 +97,7 @@ public class Dude {
 
         Task task = list.get(i - 1);
         list.remove(i - 1);
-        printMessage(String.format("Noted. I've removed the task:\n  %s\nYou now have %d task%s in the list",
+        printMessage(String.format("Noted. I've removed the task:\n  %s\nYou now have %d task%s in the list.",
                                     task,
                                     list.size(),
                                     list.size() == 1 ? "" : "s"));
