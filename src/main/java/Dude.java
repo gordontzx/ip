@@ -48,6 +48,33 @@ public class Dude {
         printMessage("Ok, I've marked this task as not done yet:\n  " + task);
     }
 
+    private static void processCommand(String command, String argument) {
+        if (command.equals("list")) {
+            printList();
+        } else if (command.equals("add")) {
+            if (argument.isEmpty()) {
+                printMessage("Error! Usage: add TASK_NAME");
+                return;
+            }
+            list.add(new Task(argument));
+            printMessage("Added: " + argument);
+        } else if (command.equals("mark")) {
+            try {
+                markAsDone(Integer.parseInt(argument));
+            } catch (NumberFormatException e) {
+                printMessage("Error! Usage: mark TASK_INDEX");
+            }
+        } else if (command.equals("unmark")) {
+            try {
+                unmarkAsDone(Integer.parseInt(argument));
+            } catch (NumberFormatException e) {
+                printMessage("Error! Usage: unmark TASK_INDEX");
+            }
+        } else {
+            printMessage("Unknown command!");
+        }
+    }
+
     public static void main(String[] args) {
         printMessage("Hello! I'm Dude.\nWhat can I do for you?");
 
@@ -63,36 +90,11 @@ public class Dude {
             int firstSpace = input.indexOf(" ");
             String command = firstSpace == -1 ? input : input.substring(0, firstSpace);
             String argument = firstSpace != -1 && firstSpace + 1 < input.length()
-                    ? input.substring(firstSpace + 1)
-                    : "";
+                                ? input.substring(firstSpace + 1)
+                                : "";
 
-            // Process command
-            if (command.equals("bye")) {
-                break;
-            } else if (command.equals("list")) {
-                printList();
-            } else if (command.equals("add")) {
-                if (argument.isEmpty()) {
-                    printMessage("Error! Usage: add TASK_NAME");
-                    continue;
-                }
-                list.add(new Task(argument));
-                printMessage("Added: " + argument);
-            } else if (command.equals("mark")) {
-                try {
-                    markAsDone(Integer.parseInt(argument));
-                } catch (NumberFormatException e) {
-                    printMessage("Error! Usage: mark TASK_INDEX");
-                }
-            } else if (command.equals("unmark")) {
-                try {
-                    unmarkAsDone(Integer.parseInt(argument));
-                } catch (NumberFormatException e) {
-                    printMessage("Error! Usage: unmark TASK_INDEX");
-                }
-            } else {
-                printMessage("Unknown command!");
-            }
+            if (command.equals("bye")) { break; }
+            processCommand(command, argument);
         }
         scanner.close();
 
