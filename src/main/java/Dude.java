@@ -24,6 +24,6 @@ public class Dude {
         }
         scanner.close();
 
-        printMessage("Bye, Hope to see you again soon!");
+        printMessage("Bye. Hope to see you again soon!");
     }
 }
