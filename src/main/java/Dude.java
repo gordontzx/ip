@@ -7,11 +7,10 @@ public class Dude {
     // Wraps message between horizontal lines and prints it
     private static void printMessage(String message) {
         System.out.println("--------------------------------------------------\n"
-                + message
-                + "\n--------------------------------------------------");
+                            + message
+                            + "\n--------------------------------------------------");
     }
 
-    // Print list
     private static void printList() {
         StringBuilder sb = new StringBuilder();
         if (list.isEmpty()) {
@@ -24,6 +23,52 @@ public class Dude {
                 sb.append('\n');
         }
         printMessage(sb.toString());
+    }
+
+    private static void printAddedTask(Task task) {
+        printMessage(String.format("Got it. I've added this task:\n  %s\nYou now have %d tasks in the list",
+                                    task,
+                                    list.size()));
+    }
+
+    private static void addTodoTask(String taskDesc) {
+        if (taskDesc.isEmpty()) {
+            printMessage("Error! Usage: todo TASK_NAME");
+            return;
+        }
+
+        TodoTask t = new TodoTask(taskDesc);
+        list.add(t);
+        printAddedTask(t);
+    }
+
+    private static void addDeadlineTask(String taskDesc) {
+        String[] parts = taskDesc.split(" /by ");
+        if (parts.length != 2) {
+            printMessage("Error! Usage: deadline TASK_NAME /by DEADLINE");
+            return;
+        }
+
+        DeadlineTask t = new DeadlineTask(parts[0], parts[1]);
+        list.add(t);
+        printAddedTask(t);
+    }
+
+    private static void addEventTask(String taskDesc) {
+        String[] parts1 = taskDesc.split(" /from ");
+        if (parts1.length != 2) {
+            printMessage("Error! Usage: event TASK_NAME /from START /to END");
+            return;
+        }
+        String[] parts2 = parts1[1].split(" /to ");
+        if (parts2.length != 2) {
+            printMessage("Error! Usage: event TASK_NAME /from START /to END");
+            return;
+        }
+
+        EventTask t = new EventTask(parts1[0], parts2[0], parts2[1]);
+        list.add(t);
+        printAddedTask(t);
     }
 
     private static void markAsDone(int i) {
@@ -48,25 +93,24 @@ public class Dude {
         printMessage("Ok, I've marked this task as not done yet:\n  " + task);
     }
 
-    private static void processCommand(String command, String argument) {
-        if (command.equals("list")) {
+    private static void processCommand(String cmd, String arg) {
+        if (cmd.equals("list")) {
             printList();
-        } else if (command.equals("add")) {
-            if (argument.isEmpty()) {
-                printMessage("Error! Usage: add TASK_NAME");
-                return;
-            }
-            list.add(new Task(argument));
-            printMessage("Added: " + argument);
-        } else if (command.equals("mark")) {
+        } else if (cmd.equals("todo")) {
+            addTodoTask(arg);
+        } else if (cmd.equals("deadline")) {
+            addDeadlineTask(arg);
+        } else if (cmd.equals("event")) {
+            addEventTask(arg);
+        } else if (cmd.equals("mark")) {
             try {
-                markAsDone(Integer.parseInt(argument));
+                markAsDone(Integer.parseInt(arg));
             } catch (NumberFormatException e) {
                 printMessage("Error! Usage: mark TASK_INDEX");
             }
-        } else if (command.equals("unmark")) {
+        } else if (cmd.equals("unmark")) {
             try {
-                unmarkAsDone(Integer.parseInt(argument));
+                unmarkAsDone(Integer.parseInt(arg));
             } catch (NumberFormatException e) {
                 printMessage("Error! Usage: unmark TASK_INDEX");
             }
@@ -88,13 +132,13 @@ public class Dude {
 
             // Split input into command and argument
             int firstSpace = input.indexOf(" ");
-            String command = firstSpace == -1 ? input : input.substring(0, firstSpace);
-            String argument = firstSpace != -1 && firstSpace + 1 < input.length()
+            String cmd = firstSpace == -1 ? input : input.substring(0, firstSpace);
+            String arg = firstSpace != -1 && firstSpace + 1 < input.length()
                                 ? input.substring(firstSpace + 1)
                                 : "";
 
-            if (command.equals("bye")) { break; }
-            processCommand(command, argument);
+            if (cmd.equals("bye")) { break; }
+            processCommand(cmd, arg);
         }
         scanner.close();
 
