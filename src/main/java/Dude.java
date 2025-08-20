@@ -1,9 +1,8 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Dude {
-    private static ArrayList<String> list;
+    private static ArrayList<Task> list;
 
     // Wraps message between horizontal lines and prints it
     private static void printMessage(String message) {
@@ -20,7 +19,7 @@ public class Dude {
         }
 
         for (int i = 0; i < list.size(); ++i) {
-            sb.append(String.format("%d. %s", i+1, list.get(i)));
+            sb.append(String.format("%d.%s", i+1, list.get(i)));
             if (i != list.size() - 1)
                 sb.append('\n');
         }
@@ -55,7 +54,7 @@ public class Dude {
                     printMessage("Error! Usage: add TASK_NAME");
                     continue;
                 }
-                list.add(argument);
+                list.add(new Task(argument));
                 printMessage("Added: " + argument);
             } else {
                 printMessage("Unknown command!");
