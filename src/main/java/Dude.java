@@ -71,7 +71,7 @@ public class Dude {
     }
 
     private static void markAsDone(int i) throws InvalidArgumentsException {
-        if (i < 0 || i > list.size()) {
+        if (i <= 0 || i > list.size()) {
             throw new InvalidArgumentsException("Index out of range!");
         }
 
@@ -81,7 +81,7 @@ public class Dude {
     }
 
     private static void unmarkAsDone(int i) {
-        if (i < 0 || i > list.size()) {
+        if (i <= 0 || i > list.size()) {
             throw new InvalidArgumentsException("Index out of range!");
         }
 
@@ -91,7 +91,7 @@ public class Dude {
     }
 
     private static void deleteTask(int i) throws InvalidArgumentsException {
-        if (i < 0 || i > list.size()) {
+        if (i <= 0 || i > list.size()) {
             throw new InvalidArgumentsException("Index out of range!");
         }
 
