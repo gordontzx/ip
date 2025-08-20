@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Dude {
@@ -35,16 +36,29 @@ public class Dude {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.print(": ");
-            String command = scanner.nextLine();
+            String input = scanner.nextLine().trim();
 
-            // User entered "bye", end program loop
-            if (command.equals("bye")) { break; }
+            // Split input into command and argument
+            int firstSpace = input.indexOf(" ");
+            String command = firstSpace == -1 ? input : input.substring(0, firstSpace);
+            String argument = firstSpace != -1 && firstSpace + 1 < input.length()
+                                ? input.substring(firstSpace + 1)
+                                : "";
 
-            if (command.equals("list")) {
+            // Process command
+            if (command.equals("bye")) {
+                break;
+            } else if (command.equals("list")) {
                 printList();
+            } else if (command.equals("add")) {
+                if (argument.isEmpty()) {
+                    printMessage("Error! Usage: add TASK_NAME");
+                    continue;
+                }
+                list.add(argument);
+                printMessage("Added: " + argument);
             } else {
-                list.add(command);
-                printMessage("Added: " + command);
+                printMessage("Unknown command!");
             }
         }
         scanner.close();
