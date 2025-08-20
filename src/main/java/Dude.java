@@ -26,6 +26,28 @@ public class Dude {
         printMessage(sb.toString());
     }
 
+    private static void markAsDone(int i) {
+        if (i < 0 || i > list.size()) {
+            printMessage("Invalid task id!");
+            return;
+        }
+
+        Task task = list.get(i - 1);
+        task.markAsDone();
+        printMessage("Nice! I've marked this task as done:\n  " + task);
+    }
+
+    private static void unmarkAsDone(int i) {
+        if (i < 0 || i > list.size()) {
+            printMessage("Invalid task id!");
+            return;
+        }
+
+        Task task = list.get(i - 1);
+        task.unmarkAsDone();
+        printMessage("Ok, I've marked this task as not done yet:\n  " + task);
+    }
+
     public static void main(String[] args) {
         printMessage("Hello! I'm Dude.\nWhat can I do for you?");
 
@@ -41,8 +63,8 @@ public class Dude {
             int firstSpace = input.indexOf(" ");
             String command = firstSpace == -1 ? input : input.substring(0, firstSpace);
             String argument = firstSpace != -1 && firstSpace + 1 < input.length()
-                                ? input.substring(firstSpace + 1)
-                                : "";
+                    ? input.substring(firstSpace + 1)
+                    : "";
 
             // Process command
             if (command.equals("bye")) {
@@ -56,6 +78,18 @@ public class Dude {
                 }
                 list.add(new Task(argument));
                 printMessage("Added: " + argument);
+            } else if (command.equals("mark")) {
+                try {
+                    markAsDone(Integer.parseInt(argument));
+                } catch (NumberFormatException e) {
+                    printMessage("Error! Usage: mark TASK_INDEX");
+                }
+            } else if (command.equals("unmark")) {
+                try {
+                    unmarkAsDone(Integer.parseInt(argument));
+                } catch (NumberFormatException e) {
+                    printMessage("Error! Usage: unmark TASK_INDEX");
+                }
             } else {
                 printMessage("Unknown command!");
             }
