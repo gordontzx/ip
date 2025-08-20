@@ -1,3 +1,4 @@
+import java.nio.charset.IllegalCharsetNameException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -32,10 +33,9 @@ public class Dude {
                                     list.size() == 1 ? "" : "s"));
     }
 
-    private static void addTodoTask(String taskDesc) {
+    private static void addTodoTask(String taskDesc) throws InvalidArgumentsException {
         if (taskDesc.isEmpty()) {
-            printMessage("Error! Usage: todo TASK_NAME");
-            return;
+            throw new InvalidArgumentsException("Too few arguments!");
         }
 
         TodoTask t = new TodoTask(taskDesc);
@@ -43,11 +43,10 @@ public class Dude {
         printAddedTask(t);
     }
 
-    private static void addDeadlineTask(String taskDesc) {
+    private static void addDeadlineTask(String taskDesc) throws InvalidArgumentsException {
         String[] parts = taskDesc.split(" /by ");
         if (parts.length != 2) {
-            printMessage("Error! Usage: deadline TASK_NAME /by DEADLINE");
-            return;
+            throw new InvalidArgumentsException("Too many or too few arguments!");
         }
 
         DeadlineTask t = new DeadlineTask(parts[0], parts[1]);
@@ -55,16 +54,14 @@ public class Dude {
         printAddedTask(t);
     }
 
-    private static void addEventTask(String taskDesc) {
+    private static void addEventTask(String taskDesc) throws InvalidArgumentsException {
         String[] parts1 = taskDesc.split(" /from ");
         if (parts1.length != 2) {
-            printMessage("Error! Usage: event TASK_NAME /from START /to END");
-            return;
+            throw new InvalidArgumentsException("Too many or too few arguments!");
         }
         String[] parts2 = parts1[1].split(" /to ");
         if (parts2.length != 2) {
-            printMessage("Error! Usage: event TASK_NAME /from START /to END");
-            return;
+            throw new InvalidArgumentsException("Too many or too few arguments!");
         }
 
         EventTask t = new EventTask(parts1[0], parts2[0], parts2[1]);
@@ -72,10 +69,9 @@ public class Dude {
         printAddedTask(t);
     }
 
-    private static void markAsDone(int i) {
+    private static void markAsDone(int i) throws InvalidArgumentsException {
         if (i < 0 || i > list.size()) {
-            printMessage("Invalid task id!");
-            return;
+            throw new InvalidArgumentsException("Index out of range!");
         }
 
         Task task = list.get(i - 1);
@@ -85,8 +81,7 @@ public class Dude {
 
     private static void unmarkAsDone(int i) {
         if (i < 0 || i > list.size()) {
-            printMessage("Invalid task id!");
-            return;
+            throw new InvalidArgumentsException("Index out of range!");
         }
 
         Task task = list.get(i - 1);
@@ -98,22 +93,38 @@ public class Dude {
         if (cmd.equals("list")) {
             printList();
         } else if (cmd.equals("todo")) {
-            addTodoTask(arg);
+            try {
+                addTodoTask(arg);
+            } catch (InvalidArgumentsException e) {
+                printMessage("Error! Usage: todo TASK_NAME");
+            }
         } else if (cmd.equals("deadline")) {
-            addDeadlineTask(arg);
+            try {
+                addDeadlineTask(arg);
+            } catch (InvalidArgumentsException e) {
+                printMessage("Error! Usage: deadline TASK_NAME /by DEADLINE");
+            }
         } else if (cmd.equals("event")) {
-            addEventTask(arg);
+            try {
+                addEventTask(arg);
+            } catch (InvalidArgumentsException e) {
+                printMessage("Error! Usage: event TASK_NAME /from START /to END");
+            }
         } else if (cmd.equals("mark")) {
             try {
                 markAsDone(Integer.parseInt(arg));
             } catch (NumberFormatException e) {
                 printMessage("Error! Usage: mark TASK_INDEX");
+            } catch (InvalidArgumentsException e) {
+                printMessage("Invalid task id!");
             }
         } else if (cmd.equals("unmark")) {
             try {
                 unmarkAsDone(Integer.parseInt(arg));
             } catch (NumberFormatException e) {
                 printMessage("Error! Usage: unmark TASK_INDEX");
+            } catch (InvalidArgumentsException e) {
+                printMessage("Invalid task id!");
             }
         } else {
             printMessage("Unknown command!");
