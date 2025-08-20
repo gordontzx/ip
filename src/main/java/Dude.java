@@ -1,4 +1,5 @@
 import java.nio.charset.IllegalCharsetNameException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -89,6 +90,19 @@ public class Dude {
         printMessage("Ok, I've marked this task as not done yet:\n  " + task);
     }
 
+    private static void deleteTask(int i) throws InvalidArgumentsException {
+        if (i < 0 || i > list.size()) {
+            throw new InvalidArgumentsException("Index out of range!");
+        }
+
+        Task task = list.get(i - 1);
+        list.remove(i - 1);
+        printMessage(String.format("Noted. I've removed the task:\n  %s\nYou now have %d task%s in the list",
+                                    task,
+                                    list.size(),
+                                    list.size() == 1 ? "" : "s"));
+    }
+
     private static void processCommand(String cmd, String arg) {
         if (cmd.equals("list")) {
             printList();
@@ -123,6 +137,14 @@ public class Dude {
                 unmarkAsDone(Integer.parseInt(arg));
             } catch (NumberFormatException e) {
                 printMessage("Error! Usage: unmark TASK_INDEX");
+            } catch (InvalidArgumentsException e) {
+                printMessage("Invalid task id!");
+            }
+        } else if (cmd.equals("delete")) {
+            try {
+                deleteTask(Integer.parseInt(arg));
+            } catch (NumberFormatException e) {
+                printMessage("Error! Usage: delete TASK_INDEX");
             } catch (InvalidArgumentsException e) {
                 printMessage("Invalid task id!");
             }
