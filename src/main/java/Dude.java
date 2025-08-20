@@ -26,9 +26,10 @@ public class Dude {
     }
 
     private static void printAddedTask(Task task) {
-        printMessage(String.format("Got it. I've added this task:\n  %s\nYou now have %d tasks in the list",
+        printMessage(String.format("Got it. I've added this task:\n  %s\nYou now have %d task%s in the list.",
                                     task,
-                                    list.size()));
+                                    list.size(),
+                                    list.size() == 1 ? "" : "s"));
     }
 
     private static void addTodoTask(String taskDesc) {
