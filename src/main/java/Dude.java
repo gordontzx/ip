@@ -1,5 +1,3 @@
-import java.nio.charset.IllegalCharsetNameException;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
