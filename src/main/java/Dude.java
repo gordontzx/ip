@@ -7,8 +7,8 @@ public class Dude {
     // Wraps message between horizontal lines and prints it
     private static void printMessage(String message) {
         System.out.println("--------------------------------------------------\n"
-                            + message
-                            + "\n--------------------------------------------------");
+                + message
+                + "\n--------------------------------------------------");
     }
 
     private static void printList() {
@@ -19,17 +19,18 @@ public class Dude {
 
         for (int i = 0; i < list.size(); ++i) {
             sb.append(String.format("%d.%s", i+1, list.get(i)));
-            if (i != list.size() - 1)
+            if (i != list.size() - 1) {
                 sb.append('\n');
+            }
         }
         printMessage(sb.toString());
     }
 
     private static void printAddedTask(Task task) {
         printMessage(String.format("Got it. I've added this task:\n  %s\nYou now have %d task%s in the list.",
-                                    task,
-                                    list.size(),
-                                    list.size() == 1 ? "" : "s"));
+                task,
+                list.size(),
+                list.size() == 1 ? "" : "s"));
     }
 
     private static void addTodoTask(String taskDesc) throws InvalidArgumentsException {
@@ -117,9 +118,9 @@ public class Dude {
         Task task = list.get(idx - 1);
         list.remove(idx - 1);
         printMessage(String.format("Noted. I've removed the task:\n  %s\nYou now have %d task%s in the list.",
-                                    task,
-                                    list.size(),
-                                    list.size() == 1 ? "" : "s"));
+                task,
+                list.size(),
+                list.size() == 1 ? "" : "s"));
     }
 
     private static void processCommand(String cmd, String arg) {
@@ -161,10 +162,12 @@ public class Dude {
             int firstSpace = input.indexOf(" ");
             String cmd = firstSpace == -1 ? input : input.substring(0, firstSpace);
             String arg = firstSpace != -1 && firstSpace + 1 < input.length()
-                                ? input.substring(firstSpace + 1)
-                                : "";
+                         ? input.substring(firstSpace + 1)
+                         : "";
 
-            if (cmd.equals("bye")) { break; }
+            if (cmd.equals("bye")) {
+                break;
+            }
             processCommand(cmd, arg);
         }
         scanner.close();
