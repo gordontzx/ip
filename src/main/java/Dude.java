@@ -55,16 +55,17 @@ public class Dude {
     }
 
     private static void addEventTask(String taskDesc) throws InvalidArgumentsException {
-        String[] parts1 = taskDesc.split(" /from ");
-        if (parts1.length != 2) {
-            throw new InvalidArgumentsException("Error! Usage: event TASK_NAME /from START /to END");
-        }
-        String[] parts2 = parts1[1].split(" /to ");
-        if (parts2.length != 2) {
+        int fromIndex = taskDesc.indexOf(" /from ");
+        int toIndex = taskDesc.indexOf(" /to ");
+        if (fromIndex == -1 || toIndex == -1
+                || fromIndex == 0 || toIndex == taskDesc.length() - 5 || fromIndex == toIndex - 7) {
             throw new InvalidArgumentsException("Error! Usage: event TASK_NAME /from START /to END");
         }
 
-        EventTask t = new EventTask(parts1[0], parts2[0], parts2[1]);
+        String taskName = taskDesc.substring(0, fromIndex);
+        String start = taskDesc.substring(fromIndex + 7, toIndex);
+        String end = taskDesc.substring(toIndex + 5);
+        EventTask t = new EventTask(taskName, start, end);
         list.add(t);
         printAddedTask(t);
     }
