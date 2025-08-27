@@ -1,3 +1,5 @@
+package dude.command;
+
 public abstract class AddCommand extends Command {
     public AddCommand(String args) {
         super(args);

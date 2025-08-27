@@ -1,3 +1,9 @@
+package dude.command;
+
+import dude.storage.Storage;
+import dude.tasklist.TaskList;
+import dude.ui.Ui;
+
 public class DeleteCommand extends Command {
     public DeleteCommand(String args) {
         super(args);

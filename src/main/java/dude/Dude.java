@@ -1,3 +1,12 @@
+package dude;
+
+import dude.command.Command;
+import dude.exception.DudeException;
+import dude.parser.Parser;
+import dude.storage.Storage;
+import dude.tasklist.TaskList;
+import dude.ui.Ui;
+
 public class Dude {
     private final Ui ui;
     private final TaskList tasks;

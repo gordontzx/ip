@@ -1,3 +1,7 @@
+package dude.parser;
+
+import dude.command.*;
+
 public class Parser {
     public static Command parse(String input) {
         int firstSpace = input.indexOf(" ");

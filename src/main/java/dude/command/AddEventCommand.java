@@ -1,3 +1,11 @@
+package dude.command;
+
+import dude.task.EventTask;
+import dude.exception.InvalidArgumentException;
+import dude.storage.Storage;
+import dude.tasklist.TaskList;
+import dude.ui.Ui;
+
 public class AddEventCommand extends AddCommand {
     public AddEventCommand(String arg) {
         super(arg);

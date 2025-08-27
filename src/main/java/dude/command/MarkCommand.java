@@ -1,3 +1,10 @@
+package dude.command;
+
+import dude.exception.InvalidArgumentException;
+import dude.storage.Storage;
+import dude.tasklist.TaskList;
+import dude.ui.Ui;
+
 public class MarkCommand extends Command {
     public MarkCommand(String args) {
         super(args);
