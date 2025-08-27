@@ -1,10 +1,14 @@
-public class Task {
+public abstract class Task {
     private String description;
     private boolean isDone;
 
     public Task(String description) {
+        this(description, false);
+    }
+
+    public Task(String description, boolean isDone) {
         this.description = description;
-        this.isDone = false;
+        this.isDone = isDone;
     }
 
     public void markAsDone() {
@@ -15,12 +19,20 @@ public class Task {
         this.isDone = false;
     }
 
+    public boolean getIsDone() {
+        return this.isDone;
+    }
+
     public String getDescription() {
         return this.description;
     }
 
     public char getStatusIcon() {
         return isDone ? 'X' : ' ';
+    }
+
+    public String toCsvString() {
+        return (isDone ? 1 : 0) + "," + description;
     }
 
     @Override

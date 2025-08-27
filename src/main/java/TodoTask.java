@@ -3,6 +3,15 @@ public class TodoTask extends Task {
         super(description);
     }
 
+    public TodoTask(String description, boolean isDone) {
+        super(description, isDone);
+    }
+
+    @Override
+    public String toCsvString() {
+        return "T," + super.toCsvString();
+    }
+
     @Override
     public String toString() {
         return "[T]" + super.toString();

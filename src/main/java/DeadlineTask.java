@@ -2,8 +2,17 @@ public class DeadlineTask extends Task {
     private String deadline;
 
     public DeadlineTask(String description, String deadline) {
-        super(description);
+        this(description, false, deadline);
+    }
+
+    public DeadlineTask(String description, boolean isDone, String deadline) {
+        super(description, isDone);
         this.deadline = deadline;
+    }
+
+    @Override
+    public String toCsvString() {
+        return String.format("D,%s,%s", super.toCsvString(), deadline);
     }
 
     @Override
