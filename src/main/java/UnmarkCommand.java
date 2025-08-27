@@ -4,9 +4,10 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui) {
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
         try {
             ui.print(tasks.unmarkAsDone(Integer.parseInt(args)));
+            storage.write(tasks.toCsvString());
         } catch (NumberFormatException e) {
             ui.print("Error! Usage: unmark TASK_INDEX");
         }

@@ -6,7 +6,7 @@ public class AddDeadlineCommand extends AddCommand {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui) {
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
         String[] parts = args.split(" /by ");
         if (parts.length != 2) {
             throw new InvalidArgumentsException("Error! Usage: deadline TASK_NAME /by YYYY-MM-DD");
@@ -14,6 +14,7 @@ public class AddDeadlineCommand extends AddCommand {
 
         try {
             ui.print(tasks.add(new DeadlineTask(parts[0], parts[1])));
+            storage.write(tasks.toCsvString());
         } catch (DateTimeParseException e) {
             throw new InvalidArgumentsException("Invalid Date! Usage: deadline TASK_NAME /by YYYY-MM-DD");
         }

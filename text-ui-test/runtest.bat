@@ -7,7 +7,7 @@ REM delete output from previous run
 if exist ACTUAL.TXT del ACTUAL.TXT
 
 REM delete data from previous run
-if exist data\data.txt del data\data.txt
+if exist data\data.csv del data\data.csv
 
 REM compile the code into the bin folder
 javac  -cp ..\src\main\java -Xlint:none -d ..\bin ..\src\main\java\*.java

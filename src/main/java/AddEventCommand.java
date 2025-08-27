@@ -4,7 +4,7 @@ public class AddEventCommand extends AddCommand {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui) {
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
         int fromIndex = args.indexOf(" /from ");
         int toIndex = args.indexOf(" /to ");
         if (fromIndex == -1 || toIndex == -1
@@ -16,5 +16,6 @@ public class AddEventCommand extends AddCommand {
         String start = args.substring(fromIndex + 7, toIndex);
         String end = args.substring(toIndex + 5);
         ui.print(tasks.add(new EventTask(taskName, start, end)));
+        storage.write(tasks.toCsvString());
     }
 }

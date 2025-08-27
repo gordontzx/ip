@@ -5,7 +5,7 @@ public abstract class Command {
         this.args = args;
     }
 
-    public abstract void execute(TaskList tasks, Ui ui) throws DudeException;
+    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws DudeException;
 
     public abstract boolean isExit();
 }
