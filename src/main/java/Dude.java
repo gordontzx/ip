@@ -1,61 +1,38 @@
-import java.util.Scanner;
-
 public class Dude {
-    private TaskList tasks;
+    private final Ui ui;
+    private final TaskList tasks;
+    private final Storage storage;
 
-    // Wraps message between horizontal lines and prints it
-    private void printMessage(String message) {
-        System.out.println("--------------------------------------------------\n"
-                + message
-                + "\n--------------------------------------------------");
-    }
-
-    private void processCommand(String cmd, String arg) {
-        try {
-            switch (cmd) {
-                case "list" ->      printMessage(tasks.toString());
-                case "todo" ->      printMessage(tasks.addTodoTask(arg));
-                case "deadline" ->  printMessage(tasks.addDeadlineTask(arg));
-                case "event" ->     printMessage(tasks.addEventTask(arg));
-                case "mark" ->      printMessage(tasks.markAsDone(arg));
-                case "unmark" ->    printMessage(tasks.unmarkAsDone(arg));
-                case "delete" ->    printMessage(tasks.deleteTask(arg));
-                default ->          printMessage("Unknown command!");
-            }
-        } catch (InvalidArgumentsException e) {
-            printMessage(e.getMessage());
-        }
+    public Dude(String filePath) {
+        this.ui = new Ui();
+        this.tasks = new TaskList();
+        this.storage = new Storage(filePath);
+        storage.read(tasks);
     }
 
     private void run() {
-        printMessage("Hello! I'm Dude.\nWhat can I do for you?");
+        ui.printWelcome();
 
-        // Initialize data structures
-        tasks = new TaskList();
-
-        Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.print(": ");
-            String input = scanner.nextLine().trim();
+            String input = ui.read();
+            Command cmd = Parser.parse(input);
 
-            // Split input into command and argument
-            int firstSpace = input.indexOf(" ");
-            String cmd = firstSpace == -1 ? input : input.substring(0, firstSpace);
-            String arg = firstSpace != -1 && firstSpace + 1 < input.length()
-                    ? input.substring(firstSpace + 1)
-                    : "";
-
-            if (cmd.equals("bye")) {
+            if (cmd.isExit()) {
                 break;
             }
-            processCommand(cmd, arg);
-        }
-        scanner.close();
 
-        printMessage("Bye. Hope to see you again soon!");
+            try {
+                cmd.execute(tasks, ui, storage);
+            } catch (DudeException e) {
+                ui.print(e.getMessage());
+            }
+        }
+
+        ui.printBye();
     }
 
     public static void main(String[] args) {
-        new Dude().run();
+        String filePath = "data/data.csv";
+        new Dude(filePath).run();
     }
 }
