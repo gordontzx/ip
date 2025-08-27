@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Dude {
-    private static ArrayList<Task> list;
+    private static TaskList tasks;
 
     // Wraps message between horizontal lines and prints it
     private static void printMessage(String message) {
@@ -11,135 +11,22 @@ public class Dude {
                 + "\n--------------------------------------------------");
     }
 
-    private static void printList() {
-        StringBuilder sb = new StringBuilder();
-        if (list.isEmpty()) {
-            sb.append("List is empty!");
-        }
-
-        for (int i = 0; i < list.size(); ++i) {
-            sb.append(String.format("%d.%s", i+1, list.get(i)));
-            if (i != list.size() - 1) {
-                sb.append('\n');
-            }
-        }
-        printMessage(sb.toString());
-    }
-
-    private static void printAddedTask(Task task) {
-        printMessage(String.format("Got it. I've added this task:\n  %s\nYou now have %d task%s in the list.",
-                task,
-                list.size(),
-                list.size() == 1 ? "" : "s"));
-    }
-
-    private static void addTodoTask(String taskDesc) throws InvalidArgumentsException {
-        if (taskDesc.isEmpty()) {
-            throw new InvalidArgumentsException("Error! Usage: todo TASK_NAME");
-        }
-
-        TodoTask t = new TodoTask(taskDesc);
-        list.add(t);
-        printAddedTask(t);
-    }
-
-    private static void addDeadlineTask(String taskDesc) throws InvalidArgumentsException {
-        String[] parts = taskDesc.split(" /by ");
-        if (parts.length != 2) {
-            throw new InvalidArgumentsException("Error! Usage: deadline TASK_NAME /by DEADLINE");
-        }
-
-        DeadlineTask t = new DeadlineTask(parts[0], parts[1]);
-        list.add(t);
-        printAddedTask(t);
-    }
-
-    private static void addEventTask(String taskDesc) throws InvalidArgumentsException {
-        int fromIndex = taskDesc.indexOf(" /from ");
-        int toIndex = taskDesc.indexOf(" /to ");
-        if (fromIndex == -1 || toIndex == -1
-                || fromIndex == 0 || toIndex == taskDesc.length() - 5 || fromIndex == toIndex - 7) {
-            throw new InvalidArgumentsException("Error! Usage: event TASK_NAME /from START /to END");
-        }
-
-        String taskName = taskDesc.substring(0, fromIndex);
-        String start = taskDesc.substring(fromIndex + 7, toIndex);
-        String end = taskDesc.substring(toIndex + 5);
-        EventTask t = new EventTask(taskName, start, end);
-        list.add(t);
-        printAddedTask(t);
-    }
-
-    private static void markAsDone(String index) throws InvalidArgumentsException {
-        int idx;
-        try {
-            idx = Integer.parseInt(index);
-        } catch (NumberFormatException e) {
-            throw new InvalidArgumentsException("Error! Usage: mark TASK_INDEX");
-        }
-
-        if (idx <= 0 || idx > list.size()) {
-            throw new InvalidArgumentsException("Invalid task id!");
-        }
-
-        Task task = list.get(idx - 1);
-        task.markAsDone();
-        printMessage("Nice! I've marked this task as done:\n  " + task);
-    }
-
-    private static void unmarkAsDone(String index) {
-        int idx;
-        try {
-            idx = Integer.parseInt(index);
-        } catch (NumberFormatException e) {
-            throw new InvalidArgumentsException("Error! Usage: unmark TASK_INDEX");
-        }
-
-        if (idx <= 0 || idx > list.size()) {
-            throw new InvalidArgumentsException("Invalid task id!");
-        }
-
-        Task task = list.get(idx - 1);
-        task.unmarkAsDone();
-        printMessage("Ok, I've marked this task as not done yet:\n  " + task);
-    }
-
-    private static void deleteTask(String index) throws InvalidArgumentsException {
-        int idx;
-        try {
-            idx = Integer.parseInt(index);
-        } catch (NumberFormatException e) {
-            throw new InvalidArgumentsException("Error! Usage: delete TASK_INDEX");
-        }
-
-        if (idx <= 0 || idx > list.size()) {
-            throw new InvalidArgumentsException("Invalid task id!");
-        }
-
-        Task task = list.get(idx - 1);
-        list.remove(idx - 1);
-        printMessage(String.format("Noted. I've removed the task:\n  %s\nYou now have %d task%s in the list.",
-                task,
-                list.size(),
-                list.size() == 1 ? "" : "s"));
-    }
-
     private static void processCommand(String cmd, String arg) {
         try {
             if (cmd.equals("list")) {
-                printList();
+                printMessage(tasks.toString());
             } else if (cmd.equals("todo")) {
-                addTodoTask(arg);
+                printMessage(tasks.addTodoTask(arg));
             } else if (cmd.equals("deadline")) {
-                addDeadlineTask(arg);
+                printMessage(tasks.addDeadlineTask(arg));
             } else if (cmd.equals("event")) {
-                addEventTask(arg);
+                printMessage(tasks.addEventTask(arg));
             } else if (cmd.equals("mark")) {
-                markAsDone(arg);
+                printMessage(tasks.markAsDone(arg));
             } else if (cmd.equals("unmark")) {
-                unmarkAsDone(arg);
+                printMessage(tasks.unmarkAsDone(arg));
             } else if (cmd.equals("delete")) {
-                deleteTask(arg);
+                printMessage(tasks.deleteTask(arg));
             } else {
                 printMessage("Unknown command!");
             }
@@ -152,7 +39,7 @@ public class Dude {
         printMessage("Hello! I'm Dude.\nWhat can I do for you?");
 
         // Initialize data structures
-        list = new ArrayList<>();
+        tasks = new TaskList();
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
