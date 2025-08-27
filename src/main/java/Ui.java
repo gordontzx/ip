@@ -8,18 +8,18 @@ public class Ui {
     }
 
     // Wraps message between horizontal lines and prints it
-    public void printMessage(String message) {
+    public void print(String message) {
         System.out.println("--------------------------------------------------\n"
                 + message
                 + "\n--------------------------------------------------");
     }
 
     public void printWelcome() {
-        printMessage("Hello! I'm Dude.\nWhat can I do for you?");
+        print("Hello! I'm Dude.\nWhat can I do for you?");
     }
 
     public void printBye() {
-        printMessage("Bye. Hope to see you again soon!");
+        print("Bye. Hope to see you again soon!");
     }
 
     public String read() {

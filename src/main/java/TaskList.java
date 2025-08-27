@@ -64,66 +64,7 @@ public class TaskList {
         }
     }
 
-    /**
-     * Adds a todo task.
-     *
-     * @param taskDesc string describing the task to be added.
-     * @return a string describing the task added.
-     * @throws InvalidArgumentsException if taskDesc is empty.
-     */
-    public String addTodoTask(String taskDesc) throws InvalidArgumentsException {
-        if (taskDesc.isEmpty()) {
-            throw new InvalidArgumentsException("Error! Usage: todo TASK_NAME");
-        }
-
-        TodoTask t = new TodoTask(taskDesc);
-        tasks.add(t);
-        save();
-        return String.format("Got it. I've added this task:\n  %s\nYou now have %d task%s in the list.",
-                t, tasks.size(), tasks.size() == 1 ? "" : "s");
-    }
-
-    /**
-     * Adds a deadline task.
-     *
-     * @param taskDesc string describing the task to be added.
-     */
-    public String addDeadlineTask(String taskDesc) throws InvalidArgumentsException {
-        String[] parts = taskDesc.split(" /by ");
-        if (parts.length != 2) {
-            throw new InvalidArgumentsException("Error! Usage: deadline TASK_NAME /by YYYY-MM-DD");
-        }
-
-        DeadlineTask t;
-        try {
-            t = new DeadlineTask(parts[0], parts[1]);
-        } catch (DateTimeParseException e) {
-            throw new InvalidArgumentsException("Invalid Date! Usage: deadline TASK_NAME /by YYYY-MM-DD");
-        }
-
-        tasks.add(t);
-        save();
-        return String.format("Got it. I've added this task:\n  %s\nYou now have %d task%s in the list.",
-                t, tasks.size(), tasks.size() == 1 ? "" : "s");
-    }
-
-    /**
-     * Adds an event task.
-     *
-     * @param taskDesc string describing the task to be added.
-     */
-    public String addEventTask(String taskDesc) throws InvalidArgumentsException {
-        int fromIndex = taskDesc.indexOf(" /from ");
-        int toIndex = taskDesc.indexOf(" /to ");
-        if (fromIndex == -1 || toIndex == -1
-                || fromIndex == 0 || toIndex == taskDesc.length() - 5 || fromIndex == toIndex - 7) {
-            throw new InvalidArgumentsException("Error! Usage: event TASK_NAME /from START /to END");
-        }
-
-        String taskName = taskDesc.substring(0, fromIndex);
-        String start = taskDesc.substring(fromIndex + 7, toIndex);
-        String end = taskDesc.substring(toIndex + 5);
-        EventTask t = new EventTask(taskName, start, end);
+    public String add(Task t) {
         tasks.add(t);
         save();
         return String.format("Got it. I've added this task:\n  %s\nYou now have %d task%s in the list.",
@@ -133,16 +74,9 @@ public class TaskList {
     /**
      * Marks task with given index as done.
      *
-     * @param index the index of the task to be marked (given as a string)
+     * @param idx the index of the task to be marked (given as a string)
      */
-    public String markAsDone(String index) throws InvalidArgumentsException {
-        int idx;
-        try {
-            idx = Integer.parseInt(index);
-        } catch (NumberFormatException e) {
-            throw new InvalidArgumentsException("Error! Usage: mark TASK_INDEX");
-        }
-
+    public String markAsDone(int idx) throws InvalidArgumentsException {
         if (idx <= 0 || idx > tasks.size()) {
             throw new InvalidArgumentsException("Invalid task id!");
         }
@@ -156,16 +90,9 @@ public class TaskList {
     /**
      * Unmarks task with given index as done.
      *
-     * @param index the index of the task to be unmarked (given as a string)
+     * @param idx the index of the task to be unmarked (given as a string)
      */
-    public String unmarkAsDone(String index) throws InvalidArgumentsException {
-        int idx;
-        try {
-            idx = Integer.parseInt(index);
-        } catch (NumberFormatException e) {
-            throw new InvalidArgumentsException("Error! Usage: unmark TASK_INDEX");
-        }
-
+    public String unmarkAsDone(int idx) throws InvalidArgumentsException {
         if (idx <= 0 || idx > tasks.size()) {
             throw new InvalidArgumentsException("Invalid task id!");
         }
@@ -179,16 +106,9 @@ public class TaskList {
     /**
      * Deletes task with given index.
      *
-     * @param index the index of the task to be deleted (given as a string)
+     * @param idx the index of the task to be deleted (given as a string)
      */
-    public String deleteTask(String index) throws InvalidArgumentsException {
-        int idx;
-        try {
-            idx = Integer.parseInt(index);
-        } catch (NumberFormatException e) {
-            throw new InvalidArgumentsException("Error! Usage: delete TASK_INDEX");
-        }
-
+    public String deleteTask(int idx) throws InvalidArgumentsException {
         if (idx <= 0 || idx > tasks.size()) {
             throw new InvalidArgumentsException("Invalid task id!");
         }
