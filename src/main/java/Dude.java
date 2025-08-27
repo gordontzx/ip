@@ -1,16 +1,16 @@
 import java.util.Scanner;
 
 public class Dude {
-    private static TaskList tasks;
+    private TaskList tasks;
 
     // Wraps message between horizontal lines and prints it
-    private static void printMessage(String message) {
+    private void printMessage(String message) {
         System.out.println("--------------------------------------------------\n"
                 + message
                 + "\n--------------------------------------------------");
     }
 
-    private static void processCommand(String cmd, String arg) {
+    private void processCommand(String cmd, String arg) {
         try {
             switch (cmd) {
                 case "list" ->      printMessage(tasks.toString());
@@ -27,7 +27,7 @@ public class Dude {
         }
     }
 
-    public static void main(String[] args) {
+    private void run() {
         printMessage("Hello! I'm Dude.\nWhat can I do for you?");
 
         // Initialize data structures
@@ -42,8 +42,8 @@ public class Dude {
             int firstSpace = input.indexOf(" ");
             String cmd = firstSpace == -1 ? input : input.substring(0, firstSpace);
             String arg = firstSpace != -1 && firstSpace + 1 < input.length()
-                         ? input.substring(firstSpace + 1)
-                         : "";
+                    ? input.substring(firstSpace + 1)
+                    : "";
 
             if (cmd.equals("bye")) {
                 break;
@@ -53,5 +53,9 @@ public class Dude {
         scanner.close();
 
         printMessage("Bye. Hope to see you again soon!");
+    }
+
+    public static void main(String[] args) {
+        new Dude().run();
     }
 }
