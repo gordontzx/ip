@@ -3,7 +3,11 @@ public class EventTask extends Task {
     private String end;
 
     public EventTask(String description, String start, String end) {
-        super(description);
+        this(description, false, start, end);
+    }
+
+    public EventTask(String description, boolean isDone, String start, String end) {
+        super(description, isDone);
         this.start = start;
         this.end = end;
     }
