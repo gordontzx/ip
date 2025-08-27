@@ -13,22 +13,15 @@ public class Dude {
 
     private static void processCommand(String cmd, String arg) {
         try {
-            if (cmd.equals("list")) {
-                printMessage(tasks.toString());
-            } else if (cmd.equals("todo")) {
-                printMessage(tasks.addTodoTask(arg));
-            } else if (cmd.equals("deadline")) {
-                printMessage(tasks.addDeadlineTask(arg));
-            } else if (cmd.equals("event")) {
-                printMessage(tasks.addEventTask(arg));
-            } else if (cmd.equals("mark")) {
-                printMessage(tasks.markAsDone(arg));
-            } else if (cmd.equals("unmark")) {
-                printMessage(tasks.unmarkAsDone(arg));
-            } else if (cmd.equals("delete")) {
-                printMessage(tasks.deleteTask(arg));
-            } else {
-                printMessage("Unknown command!");
+            switch (cmd) {
+                case "list" ->      printMessage(tasks.toString());
+                case "todo" ->      printMessage(tasks.addTodoTask(arg));
+                case "deadline" ->  printMessage(tasks.addDeadlineTask(arg));
+                case "event" ->     printMessage(tasks.addEventTask(arg));
+                case "mark" ->      printMessage(tasks.markAsDone(arg));
+                case "unmark" ->    printMessage(tasks.unmarkAsDone(arg));
+                case "delete" ->    printMessage(tasks.deleteTask(arg));
+                default ->          printMessage("Unknown command!");
             }
         } catch (InvalidArgumentsException e) {
             printMessage(e.getMessage());
