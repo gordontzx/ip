@@ -32,7 +32,7 @@ public abstract class Task {
     }
 
     public String toCsvString() {
-        return description + "," + (isDone ? 1 : 0);
+        return (isDone ? 1 : 0) + "," + description;
     }
 
     @Override
