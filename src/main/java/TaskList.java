@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,6 +77,7 @@ public class TaskList {
 
         TodoTask t = new TodoTask(taskDesc);
         tasks.add(t);
+        save();
         return String.format("Got it. I've added this task:\n  %s\nYou now have %d task%s in the list.",
                 t, tasks.size(), tasks.size() == 1 ? "" : "s");
     }
@@ -93,6 +95,7 @@ public class TaskList {
 
         DeadlineTask t = new DeadlineTask(parts[0], parts[1]);
         tasks.add(t);
+        save();
         return String.format("Got it. I've added this task:\n  %s\nYou now have %d task%s in the list.",
                 t, tasks.size(), tasks.size() == 1 ? "" : "s");
     }
@@ -115,6 +118,7 @@ public class TaskList {
         String end = taskDesc.substring(toIndex + 5);
         EventTask t = new EventTask(taskName, start, end);
         tasks.add(t);
+        save();
         return String.format("Got it. I've added this task:\n  %s\nYou now have %d task%s in the list.",
                 t, tasks.size(), tasks.size() == 1 ? "" : "s");
     }
@@ -138,6 +142,7 @@ public class TaskList {
 
         Task task = tasks.get(idx - 1);
         task.markAsDone();
+        save();
         return "Nice! I've marked this task as done:\n  " + task;
     }
 
@@ -160,6 +165,7 @@ public class TaskList {
 
         Task task = tasks.get(idx - 1);
         task.unmarkAsDone();
+        save();
         return "Ok, I've marked this task as not done yet:\n  " + task;
     }
 
@@ -182,8 +188,21 @@ public class TaskList {
 
         Task task = tasks.get(idx - 1);
         tasks.remove(idx - 1);
+        save();
         return String.format("Noted. I've removed the task:\n  %s\nYou now have %d task%s in the list.",
                 task, tasks.size(), tasks.size() == 1 ? "" : "s");
+    }
+
+    private void save() {
+        try {
+            FileWriter fw = new FileWriter(FILE_PATH);
+            for (Task t : tasks) {
+                fw.write(t.toCsvString() + System.lineSeparator());
+            }
+            fw.close();
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     @Override
