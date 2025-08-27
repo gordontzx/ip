@@ -1,42 +1,36 @@
 import java.util.Scanner;
 
 public class Dude {
+    private UI ui;
     private TaskList tasks;
 
-    // Wraps message between horizontal lines and prints it
-    private void printMessage(String message) {
-        System.out.println("--------------------------------------------------\n"
-                + message
-                + "\n--------------------------------------------------");
+    public Dude() {
+        this.ui = new UI();
+        this.tasks = new TaskList();
     }
 
     private void processCommand(String cmd, String arg) {
         try {
             switch (cmd) {
-                case "list" ->      printMessage(tasks.toString());
-                case "todo" ->      printMessage(tasks.addTodoTask(arg));
-                case "deadline" ->  printMessage(tasks.addDeadlineTask(arg));
-                case "event" ->     printMessage(tasks.addEventTask(arg));
-                case "mark" ->      printMessage(tasks.markAsDone(arg));
-                case "unmark" ->    printMessage(tasks.unmarkAsDone(arg));
-                case "delete" ->    printMessage(tasks.deleteTask(arg));
-                default ->          printMessage("Unknown command!");
+                case "list" ->      ui.printMessage(tasks.toString());
+                case "todo" ->      ui.printMessage(tasks.addTodoTask(arg));
+                case "deadline" ->  ui.printMessage(tasks.addDeadlineTask(arg));
+                case "event" ->     ui.printMessage(tasks.addEventTask(arg));
+                case "mark" ->      ui.printMessage(tasks.markAsDone(arg));
+                case "unmark" ->    ui.printMessage(tasks.unmarkAsDone(arg));
+                case "delete" ->    ui.printMessage(tasks.deleteTask(arg));
+                default ->          ui.printMessage("Unknown command!");
             }
         } catch (InvalidArgumentsException e) {
-            printMessage(e.getMessage());
+            ui.printMessage(e.getMessage());
         }
     }
 
     private void run() {
-        printMessage("Hello! I'm Dude.\nWhat can I do for you?");
+        ui.printWelcome();
 
-        // Initialize data structures
-        tasks = new TaskList();
-
-        Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.print(": ");
-            String input = scanner.nextLine().trim();
+            String input = ui.read();
 
             // Split input into command and argument
             int firstSpace = input.indexOf(" ");
@@ -50,9 +44,8 @@ public class Dude {
             }
             processCommand(cmd, arg);
         }
-        scanner.close();
 
-        printMessage("Bye. Hope to see you again soon!");
+        ui.printBye();
     }
 
     public static void main(String[] args) {
