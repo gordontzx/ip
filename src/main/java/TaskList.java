@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /*
 Storage format:
-<type> | <is_done> | <task_name> | [details]
+<type>,<is_done>,<task_name>,[by|from,to]
 
 types:
 T: todo task
@@ -14,16 +14,16 @@ D: deadline task
 E: event task
 
 e.g.
-T | 1 | read book
-D | 0 | return book | June 6th
-E | 0 | project meeting | Aug 6th 2pm | 4pm
-T | 1 | join sports club
+T,1,read book
+D,0,return book,June 6th
+E,0,project meeting,Aug 6th 2pm,4pm
+T,1,join sports club
  */
 
 public class TaskList {
     private static final String FILE_DIR = "data";
     private static final String FILE_PATH = "data/data.txt";
-    private static final String DELIMITER = " \\| ";
+    private static final String DELIMITER = ",";
     List<Task> tasks;
 
     public TaskList() {
