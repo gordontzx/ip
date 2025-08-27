@@ -1,3 +1,5 @@
+package dude.ui;
+
 import java.util.Scanner;
 
 public class Ui {
@@ -15,7 +17,7 @@ public class Ui {
     }
 
     public void printWelcome() {
-        print("Hello! I'm Dude.\nWhat can I do for you?");
+        print("Hello! I'm dude.Dude.\nWhat can I do for you?");
     }
 
     public void printBye() {

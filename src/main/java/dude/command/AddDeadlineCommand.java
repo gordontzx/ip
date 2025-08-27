@@ -1,3 +1,11 @@
+package dude.command;
+
+import dude.task.DeadlineTask;
+import dude.exception.InvalidArgumentException;
+import dude.storage.Storage;
+import dude.tasklist.TaskList;
+import dude.ui.Ui;
+
 import java.time.format.DateTimeParseException;
 
 public class AddDeadlineCommand extends AddCommand {

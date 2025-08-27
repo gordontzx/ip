@@ -1,3 +1,9 @@
+package dude.command;
+
+import dude.storage.Storage;
+import dude.tasklist.TaskList;
+import dude.ui.Ui;
+
 public class InvalidCommand extends Command {
     public InvalidCommand() {
         super("");

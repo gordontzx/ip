@@ -1,3 +1,9 @@
+package dude.command;
+
+import dude.storage.Storage;
+import dude.tasklist.TaskList;
+import dude.ui.Ui;
+
 public class UnmarkCommand extends Command {
     public UnmarkCommand(String args) {
         super(args);

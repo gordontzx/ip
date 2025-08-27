@@ -1,3 +1,12 @@
+package dude.storage;
+
+import dude.tasklist.TaskList;
+import dude.exception.CorruptFileException;
+import dude.task.DeadlineTask;
+import dude.task.EventTask;
+import dude.task.Task;
+import dude.task.TodoTask;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -5,7 +14,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /*
-Storage format:
+dude.storage.Storage format:
 <type>,<is_done>,<task_name>,[by|from,to]
 
 types:
@@ -58,7 +67,7 @@ public class Storage {
      * Reads contents from file and adds into list of tasks.
      * Assumes file type is csv.
      *
-     * @param tasks TaskList object
+     * @param tasks dude.tasklist.TaskList object
      */
     public void read(TaskList tasks) {
         try {

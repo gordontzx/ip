@@ -1,3 +1,9 @@
+package dude.command;
+
+import dude.storage.Storage;
+import dude.tasklist.TaskList;
+import dude.ui.Ui;
+
 public class ExitCommand extends Command {
     public ExitCommand() {
         super("");
