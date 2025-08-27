@@ -1,11 +1,9 @@
-import java.util.Scanner;
-
 public class Dude {
-    private UI ui;
+    private Ui ui;
     private TaskList tasks;
 
     public Dude() {
-        this.ui = new UI();
+        this.ui = new Ui();
         this.tasks = new TaskList();
     }
 
