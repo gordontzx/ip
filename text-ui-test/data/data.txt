@@ -1,0 +1,4 @@
+T,0,borrow book
+D,0,return book,2025-12-31
+E,0,meeting,3pm,5pm
+E,0,another meeting,6pm,8pm

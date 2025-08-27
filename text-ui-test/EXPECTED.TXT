@@ -25,23 +25,29 @@ Got it. I've added this task:
 You now have 2 tasks in the list.
 --------------------------------------------------
 : --------------------------------------------------
+Invalid Date! Usage: deadline TASK_NAME /by YYYY-MM-DD
+--------------------------------------------------
+: --------------------------------------------------
+Invalid Date! Usage: deadline TASK_NAME /by YYYY-MM-DD
+--------------------------------------------------
+: --------------------------------------------------
 Got it. I've added this task:
-  [D][ ] return book (by: Wednesday)
+  [D][ ] return book (by: Dec 31 2025)
 You now have 3 tasks in the list.
 --------------------------------------------------
 : --------------------------------------------------
-Error! Usage: deadline TASK_NAME /by DEADLINE
+Error! Usage: deadline TASK_NAME /by YYYY-MM-DD
 --------------------------------------------------
 : --------------------------------------------------
-Error! Usage: deadline TASK_NAME /by DEADLINE
+Error! Usage: deadline TASK_NAME /by YYYY-MM-DD
 --------------------------------------------------
 : --------------------------------------------------
-Error! Usage: deadline TASK_NAME /by DEADLINE
+Error! Usage: deadline TASK_NAME /by YYYY-MM-DD
 --------------------------------------------------
 : --------------------------------------------------
 1.[T][ ] borrow book
 2.[T][ ] read book
-3.[D][ ] return book (by: Wednesday)
+3.[D][ ] return book (by: Dec 31 2025)
 --------------------------------------------------
 : --------------------------------------------------
 Got it. I've added this task:
@@ -68,7 +74,7 @@ Error! Usage: event TASK_NAME /from START /to END
 : --------------------------------------------------
 1.[T][ ] borrow book
 2.[T][ ] read book
-3.[D][ ] return book (by: Wednesday)
+3.[D][ ] return book (by: Dec 31 2025)
 4.[E][ ] meeting (from: 3pm to: 5pm)
 5.[E][ ] another meeting (from: 6pm to: 8pm)
 --------------------------------------------------
@@ -83,12 +89,12 @@ Error! Usage: mark TASK_INDEX
 --------------------------------------------------
 : --------------------------------------------------
 Nice! I've marked this task as done:
-  [D][X] return book (by: Wednesday)
+  [D][X] return book (by: Dec 31 2025)
 --------------------------------------------------
 : --------------------------------------------------
 1.[T][ ] borrow book
 2.[T][ ] read book
-3.[D][X] return book (by: Wednesday)
+3.[D][X] return book (by: Dec 31 2025)
 4.[E][ ] meeting (from: 3pm to: 5pm)
 5.[E][ ] another meeting (from: 6pm to: 8pm)
 --------------------------------------------------
@@ -103,12 +109,12 @@ Error! Usage: unmark TASK_INDEX
 --------------------------------------------------
 : --------------------------------------------------
 Ok, I've marked this task as not done yet:
-  [D][ ] return book (by: Wednesday)
+  [D][ ] return book (by: Dec 31 2025)
 --------------------------------------------------
 : --------------------------------------------------
 1.[T][ ] borrow book
 2.[T][ ] read book
-3.[D][ ] return book (by: Wednesday)
+3.[D][ ] return book (by: Dec 31 2025)
 4.[E][ ] meeting (from: 3pm to: 5pm)
 5.[E][ ] another meeting (from: 6pm to: 8pm)
 --------------------------------------------------
@@ -125,7 +131,7 @@ You now have 4 tasks in the list.
 --------------------------------------------------
 : --------------------------------------------------
 1.[T][ ] borrow book
-2.[D][ ] return book (by: Wednesday)
+2.[D][ ] return book (by: Dec 31 2025)
 3.[E][ ] meeting (from: 3pm to: 5pm)
 4.[E][ ] another meeting (from: 6pm to: 8pm)
 --------------------------------------------------

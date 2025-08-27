@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -90,10 +91,16 @@ public class TaskList {
     public String addDeadlineTask(String taskDesc) throws InvalidArgumentsException {
         String[] parts = taskDesc.split(" /by ");
         if (parts.length != 2) {
-            throw new InvalidArgumentsException("Error! Usage: deadline TASK_NAME /by DEADLINE");
+            throw new InvalidArgumentsException("Error! Usage: deadline TASK_NAME /by YYYY-MM-DD");
         }
 
-        DeadlineTask t = new DeadlineTask(parts[0], parts[1]);
+        DeadlineTask t;
+        try {
+            t = new DeadlineTask(parts[0], parts[1]);
+        } catch (DateTimeParseException e) {
+            throw new InvalidArgumentsException("Invalid Date! Usage: deadline TASK_NAME /by YYYY-MM-DD");
+        }
+
         tasks.add(t);
         save();
         return String.format("Got it. I've added this task:\n  %s\nYou now have %d task%s in the list.",
