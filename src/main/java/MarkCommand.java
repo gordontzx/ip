@@ -10,7 +10,7 @@ public class MarkCommand extends Command {
             ui.print(tasks.markAsDone(idx));
             storage.write(tasks.toCsvString());
         } catch (NumberFormatException e) {
-            throw new InvalidArgumentsException("Error! Usage: mark TASK_INDEX");
+            throw new InvalidArgumentException("Error! Usage: mark TASK_INDEX");
         }
     }
 

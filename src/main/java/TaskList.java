@@ -1,5 +1,3 @@
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +21,9 @@ public class TaskList {
      *
      * @param idx the index of the task to be marked (given as a string)
      */
-    public String markAsDone(int idx) throws InvalidArgumentsException {
+    public String markAsDone(int idx) throws InvalidArgumentException {
         if (idx <= 0 || idx > tasks.size()) {
-            throw new InvalidArgumentsException("Invalid task id!");
+            throw new InvalidArgumentException("Invalid task id!");
         }
 
         Task task = tasks.get(idx - 1);
@@ -38,9 +36,9 @@ public class TaskList {
      *
      * @param idx the index of the task to be unmarked (given as a string)
      */
-    public String unmarkAsDone(int idx) throws InvalidArgumentsException {
+    public String unmarkAsDone(int idx) throws InvalidArgumentException {
         if (idx <= 0 || idx > tasks.size()) {
-            throw new InvalidArgumentsException("Invalid task id!");
+            throw new InvalidArgumentException("Invalid task id!");
         }
 
         Task task = tasks.get(idx - 1);
@@ -53,9 +51,9 @@ public class TaskList {
      *
      * @param idx the index of the task to be deleted (given as a string)
      */
-    public String deleteTask(int idx) throws InvalidArgumentsException {
+    public String deleteTask(int idx) throws InvalidArgumentException {
         if (idx <= 0 || idx > tasks.size()) {
-            throw new InvalidArgumentsException("Invalid task id!");
+            throw new InvalidArgumentException("Invalid task id!");
         }
 
         Task task = tasks.get(idx - 1);

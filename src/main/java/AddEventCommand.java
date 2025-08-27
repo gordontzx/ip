@@ -9,7 +9,7 @@ public class AddEventCommand extends AddCommand {
         int toIndex = args.indexOf(" /to ");
         if (fromIndex == -1 || toIndex == -1
                 || fromIndex == 0 || toIndex == args.length() - 5 || fromIndex == toIndex - 7) {
-            throw new InvalidArgumentsException("Error! Usage: event TASK_NAME /from START /to END");
+            throw new InvalidArgumentException("Error! Usage: event TASK_NAME /from START /to END");
         }
 
         String taskName = args.substring(0, fromIndex);
