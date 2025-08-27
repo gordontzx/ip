@@ -10,6 +10,10 @@ public class DeadlineTask extends Task {
         this.deadline = deadline;
     }
 
+    @Override
+    public String toCsvString() {
+        return String.format("D,%s,%s", super.toCsvString(), deadline);
+    }
 
     @Override
     public String toString() {

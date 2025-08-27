@@ -19,12 +19,20 @@ public abstract class Task {
         this.isDone = false;
     }
 
+    public boolean getIsDone() {
+        return this.isDone;
+    }
+
     public String getDescription() {
         return this.description;
     }
 
     public char getStatusIcon() {
         return isDone ? 'X' : ' ';
+    }
+
+    public String toCsvString() {
+        return description + "," + (isDone ? 1 : 0);
     }
 
     @Override

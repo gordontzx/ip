@@ -8,6 +8,11 @@ public class TodoTask extends Task {
     }
 
     @Override
+    public String toCsvString() {
+        return "T," + super.toCsvString();
+    }
+
+    @Override
     public String toString() {
         return "[T]" + super.toString();
     }
