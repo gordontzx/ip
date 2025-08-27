@@ -1,13 +1,26 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+
 public class DeadlineTask extends Task {
-    private String deadline;
+    private static final String[] MONTHS = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+
+    private LocalDate deadline;
 
     public DeadlineTask(String description, String deadline) {
         this(description, false, deadline);
     }
 
-    public DeadlineTask(String description, boolean isDone, String deadline) {
+    public DeadlineTask(String description, boolean isDone, String deadline) throws DateTimeParseException  {
         super(description, isDone);
-        this.deadline = deadline;
+        this.deadline = LocalDate.parse(deadline);
+    }
+
+    private String getPrettyDate() {
+        return String.format("%s %d %d",
+                MONTHS[deadline.getMonthValue() - 1],
+                deadline.getDayOfMonth(),
+                deadline.getYear());
     }
 
     @Override
@@ -17,6 +30,6 @@ public class DeadlineTask extends Task {
 
     @Override
     public String toString() {
-        return String.format("%s%s (by: %s)", "[D]", super.toString(), deadline);
+        return String.format("%s%s (by: %s)", "[D]", super.toString(), getPrettyDate());
     }
 }

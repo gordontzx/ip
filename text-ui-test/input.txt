@@ -5,6 +5,8 @@ todo
 todo borrow book
 todo read book
 deadline return book /by Wednesday
+deadline return book /by 2025-13-01
+deadline return book /by 2025-12-31
 deadline
 deadline invalid input
 deadline \by invalid
