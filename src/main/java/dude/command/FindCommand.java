@@ -19,9 +19,9 @@ public class FindCommand extends Command {
     public void execute(TaskList tasks, Ui ui, Storage storage) {
         List<Task> matches = args.isEmpty() ? List.of() : tasks.getMatches(args);
         StringBuilder sb = new StringBuilder("Here are the matching tasks in your list:");
+        int count = 0;
         for (Task task : matches) {
-            sb.append('\n');
-            sb.append(task.toString());
+            sb.append(String.format("\n%d.%s", ++count, task.toString()));
         }
         ui.print(sb.toString());
     }
