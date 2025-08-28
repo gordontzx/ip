@@ -4,8 +4,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
 public class DeadlineTask extends Task {
-    private static final String[] MONTHS = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
-            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+    private static final String[] MONTHS = {
+            "Jan", "Feb", "Mar",
+            "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep",
+            "Oct", "Nov", "Dec"
+    };
 
     private LocalDate deadline;
 
