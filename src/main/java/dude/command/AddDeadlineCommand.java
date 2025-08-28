@@ -8,6 +8,9 @@ import dude.ui.Ui;
 
 import java.time.format.DateTimeParseException;
 
+/**
+ * Command that adds deadline tasks.
+ */
 public class AddDeadlineCommand extends AddCommand {
     public AddDeadlineCommand(String args) {
         super(args);

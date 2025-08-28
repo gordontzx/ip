@@ -7,6 +7,10 @@ import dude.storage.Storage;
 import dude.tasklist.TaskList;
 import dude.ui.Ui;
 
+/**
+ * Chatbot.
+ * Run the program from this file to start the chatbot.
+ */
 public class Dude {
     private final Ui ui;
     private final TaskList tasks;

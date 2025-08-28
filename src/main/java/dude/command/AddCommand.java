@@ -1,5 +1,8 @@
 package dude.command;
 
+/**
+ * Encapsulates commands that add a task.
+ */
 public abstract class AddCommand extends Command {
     public AddCommand(String args) {
         super(args);

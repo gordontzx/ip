@@ -5,6 +5,9 @@ import dude.storage.Storage;
 import dude.tasklist.TaskList;
 import dude.ui.Ui;
 
+/**
+ * Command that marks a task as done.
+ */
 public class MarkCommand extends Command {
     public MarkCommand(String args) {
         super(args);

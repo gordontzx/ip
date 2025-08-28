@@ -6,6 +6,9 @@ import dude.storage.Storage;
 import dude.tasklist.TaskList;
 import dude.ui.Ui;
 
+/**
+ * Command that adds event tasks.
+ */
 public class AddEventCommand extends AddCommand {
     public AddEventCommand(String arg) {
         super(arg);

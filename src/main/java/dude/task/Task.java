@@ -1,5 +1,8 @@
 package dude.task;
 
+/**
+ * Encapsulates all types of tasks that the program can handle.
+ */
 public abstract class Task {
     private String description;
     private boolean isDone;
@@ -29,10 +32,20 @@ public abstract class Task {
         return this.description;
     }
 
+    /**
+     * Returns a char indicating whether the task is completed.
+     *
+     * @return 'X' if task is done, ' ' otherwise.
+     */
     public char getStatusIcon() {
         return isDone ? 'X' : ' ';
     }
 
+    /**
+     * Fetch the task represented as a string for storage in csv format.
+     *
+     * @return A string in csv format.
+     */
     public String toCsvString() {
         return (isDone ? 1 : 0) + "," + description;
     }
