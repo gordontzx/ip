@@ -28,6 +28,7 @@ public class Parser {
             case "mark"     ->  new MarkCommand(args);
             case "unmark"   ->  new UnmarkCommand(args);
             case "delete"   ->  new DeleteCommand(args);
+            case "find"     ->  new FindCommand(args);
             default         ->  new InvalidCommand();
         };
     }
