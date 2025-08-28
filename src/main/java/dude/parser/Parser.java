@@ -2,7 +2,16 @@ package dude.parser;
 
 import dude.command.*;
 
+/**
+ * Contains method(s) that parse commands sent by the user.
+ */
 public class Parser {
+    /**
+     * Parses user command.
+     *
+     * @param input Full command sent by user.
+     * @return Command object that represents the command to be executed.
+     */
     public static Command parse(String input) {
         int firstSpace = input.indexOf(" ");
         String cmd = firstSpace == -1 ? input : input.substring(0, firstSpace);

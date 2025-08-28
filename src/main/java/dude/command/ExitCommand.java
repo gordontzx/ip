@@ -4,6 +4,9 @@ import dude.storage.Storage;
 import dude.tasklist.TaskList;
 import dude.ui.Ui;
 
+/**
+ * Command to exit the program.
+ */
 public class ExitCommand extends Command {
     public ExitCommand() {
         super("");

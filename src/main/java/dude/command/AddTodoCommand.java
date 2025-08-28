@@ -6,6 +6,9 @@ import dude.tasklist.TaskList;
 import dude.task.TodoTask;
 import dude.ui.Ui;
 
+/**
+ * Command that adds todo tasks.
+ */
 public class AddTodoCommand extends AddCommand {
     public AddTodoCommand(String args) {
         super(args);

@@ -29,6 +29,9 @@ E,0,project meeting,Aug 6th 2pm,4pm
 T,1,join sports club
  */
 
+/**
+ * Object that handles file IO for chatbot.
+ */
 public class Storage {
     private static final String DELIMITER = ",";
 
@@ -49,9 +52,9 @@ public class Storage {
     }
 
     /**
-     * Writes content into file
+     * Writes content into file.
      *
-     * @param contents to write into the file
+     * @param contents to write into the file.
      */
     public void write(String contents) {
         try {
@@ -67,7 +70,7 @@ public class Storage {
      * Reads contents from file and adds into list of tasks.
      * Assumes file type is csv.
      *
-     * @param tasks dude.tasklist.TaskList object
+     * @param tasks dude.tasklist.TaskList object.
      */
     public void read(TaskList tasks) {
         try {

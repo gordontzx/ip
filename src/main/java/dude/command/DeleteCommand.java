@@ -4,6 +4,9 @@ import dude.storage.Storage;
 import dude.tasklist.TaskList;
 import dude.ui.Ui;
 
+/**
+ * Command that deletes a task.
+ */
 public class DeleteCommand extends Command {
     public DeleteCommand(String args) {
         super(args);
