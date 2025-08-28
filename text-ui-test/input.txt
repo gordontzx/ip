@@ -32,4 +32,5 @@ delete 6
 delete
 delete 2
 list
+find e
 bye
