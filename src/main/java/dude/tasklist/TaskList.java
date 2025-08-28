@@ -6,8 +6,6 @@ import dude.task.Task;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class TaskList {
     List<Task> tasks;
 
@@ -68,6 +66,22 @@ public class TaskList {
     }
 
     /**
+     * Gets a list of tasks whose description contains keyword.
+     *
+     * @param keyword String to match task descriptions.
+     * @return List of tasks.
+     */
+    public List<Task> getMatches(String keyword) {
+        List<Task> res = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.getDescription().contains(keyword)) {
+                res.add(task);
+            }
+        }
+        return res;
+    }
+
+    /**
      * Returns a csv formatted string for saving
      *
      * @return string in csv format
@@ -80,7 +94,6 @@ public class TaskList {
         }
         return sb.toString();
     }
-
 
     @Override
     public String toString() {
