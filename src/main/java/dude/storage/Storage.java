@@ -27,7 +27,7 @@ T,1,read book
 D,0,return book,June 6th
 E,0,project meeting,Aug 6th 2pm,4pm
 T,1,join sports club
- */
+*/
 
 /**
  * Object that handles file IO for chatbot.
@@ -35,11 +35,9 @@ T,1,join sports club
 public class Storage {
     private static final String DELIMITER = ",";
 
-    private final String filePath;
     private final File file;
 
     public Storage(String filePath) {
-        this.filePath = filePath;
         this.file = new File(filePath);
 
         // Create file if it does not exist
