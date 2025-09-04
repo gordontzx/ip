@@ -13,8 +13,8 @@ public class InvalidCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        ui.print("Unknown command!");
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
+        return "Unknown command!";
     }
 
     @Override

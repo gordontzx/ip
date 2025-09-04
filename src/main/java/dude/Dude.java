@@ -54,7 +54,15 @@ public class Dude {
      * @return chatbot response.
      */
     public String getResponse(String input) {
-        return "Dude hear: " + input;
+        Command cmd = Parser.parse(input);
+        if (cmd.isExit()) {
+            return "bye!";
+        }
+        try {
+            return cmd.execute(tasks, ui, storage);
+        } catch (DudeException e) {
+            return e.getMessage();
+        }
     }
 
     public static void main(String[] args) {
