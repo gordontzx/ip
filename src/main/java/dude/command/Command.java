@@ -19,11 +19,10 @@ public abstract class Command {
      * Executes the command that this object represents.
      *
      * @param tasks The TaskList object.
-     * @param ui The Ui object that interacts with the user.
      * @param storage The Storage object that will update the save file.
      * @throws DudeException
      */
-    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws DudeException;
+    public abstract String execute(TaskList tasks, Storage storage) throws DudeException;
 
     /**
      * Checks if command is an exit command.

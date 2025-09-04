@@ -2,7 +2,6 @@ package dude.command;
 
 import dude.storage.Storage;
 import dude.tasklist.TaskList;
-import dude.ui.Ui;
 
 /**
  * Command to exit the program.
@@ -13,7 +12,9 @@ public class ExitCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {}
+    public String execute(TaskList tasks, Storage storage) {
+        return "bye!";
+    }
 
     @Override
     public boolean isExit() {

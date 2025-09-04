@@ -1,8 +1,8 @@
 package dude.command;
 
+import dude.exception.InvalidArgumentException;
 import dude.storage.Storage;
 import dude.tasklist.TaskList;
-import dude.ui.Ui;
 
 /**
  * Command that deletes a task.
@@ -13,12 +13,13 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Storage storage) throws InvalidArgumentException {
         try {
-            ui.print(tasks.deleteTask(Integer.parseInt(args)));
+            String res = tasks.deleteTask(Integer.parseInt(args));
             storage.write(tasks.toCsvString());
+            return res;
         } catch (NumberFormatException e) {
-            ui.print("Error! Usage: delete TASK_INDEX");
+            throw new InvalidArgumentException("Error! Usage: delete TASK_INDEX");
         }
     }
 

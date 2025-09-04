@@ -3,7 +3,6 @@ package dude.command;
 import dude.exception.InvalidArgumentException;
 import dude.storage.Storage;
 import dude.tasklist.TaskList;
-import dude.ui.Ui;
 
 /**
  * Command that marks a task as done.
@@ -14,11 +13,12 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Storage storage) throws InvalidArgumentException {
         try {
             int idx = Integer.parseInt(args);
-            ui.print(tasks.markAsDone(idx));
+            String res = tasks.markAsDone(idx);
             storage.write(tasks.toCsvString());
+            return res;
         } catch (NumberFormatException e) {
             throw new InvalidArgumentException("Error! Usage: mark TASK_INDEX");
         }
