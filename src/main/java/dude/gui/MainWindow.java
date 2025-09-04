@@ -1,6 +1,7 @@
 package dude.gui;
 
 import dude.Dude;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -27,9 +28,15 @@ public class MainWindow extends AnchorPane {
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/User.png"));
     private Image dudeImage = new Image(this.getClass().getResourceAsStream("/images/gigachad.png"));
 
+    /**
+     * Initializes the main window.
+     */
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        dialogContainer.getChildren().add(
+                DialogBox.getDudeDialog("Hello! I'm Dude.\nWhat can I do for you?", dudeImage)
+        );
     }
 
     /** Injects the Dude instance */
