@@ -40,7 +40,7 @@ public class Ui {
     /**
      * Reads user input from standard input.
      *
-     * @return
+     * @return string read from standard input.
      */
     public String read() {
         System.out.print(": ");

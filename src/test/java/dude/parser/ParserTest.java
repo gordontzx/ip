@@ -1,12 +1,13 @@
 package dude.parser;
 
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+
+import org.junit.jupiter.api.Test;
+
 import dude.command.Command;
 import dude.command.ExitCommand;
 import dude.command.InvalidCommand;
 import dude.command.ListCommand;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 public class ParserTest {
     @Test

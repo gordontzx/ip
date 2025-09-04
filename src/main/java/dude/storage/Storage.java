@@ -1,17 +1,17 @@
 package dude.storage;
 
-import dude.tasklist.TaskList;
-import dude.exception.CorruptFileException;
-import dude.task.DeadlineTask;
-import dude.task.EventTask;
-import dude.task.Task;
-import dude.task.TodoTask;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+
+import dude.exception.CorruptFileException;
+import dude.task.DeadlineTask;
+import dude.task.EventTask;
+import dude.task.Task;
+import dude.task.TodoTask;
+import dude.tasklist.TaskList;
 
 /*
 dude.storage.Storage format:
@@ -37,6 +37,10 @@ public class Storage {
 
     private final File file;
 
+    /**
+     * Returns a Storage object that handles file IO.
+     * @param filePath
+     */
     public Storage(String filePath) {
         this.file = new File(filePath);
 
@@ -77,17 +81,20 @@ public class Storage {
                 String line = scanner.nextLine();
                 tasks.add(parseFileLine(line));
             }
-        } catch (FileNotFoundException | CorruptFileException e) {}
+        } catch (FileNotFoundException | CorruptFileException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     private Task parseFileLine(String line) {
         String[] parts = line.split(DELIMITER);
         boolean isDone = parts[1].equals("1");
         return switch (parts[0]) {
-            case "T" -> new TodoTask(parts[2], isDone);
-            case "D" -> new DeadlineTask(parts[2], isDone, parts[3]);
-            case "E" -> new EventTask(parts[2], isDone, parts[3], parts[4]);
-            default  -> throw new CorruptFileException();
+        case "T" -> new TodoTask(parts[2], isDone);
+        case "D" -> new DeadlineTask(parts[2], isDone, parts[3]);
+        case "E" -> new EventTask(parts[2], isDone, parts[3], parts[4]);
+        default -> throw new CorruptFileException();
         };
     }
 }
