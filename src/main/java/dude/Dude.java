@@ -48,6 +48,15 @@ public class Dude {
         ui.printBye();
     }
 
+    /**
+     * Return response to user input.
+     * @param input user input.
+     * @return chatbot response.
+     */
+    public String getResponse(String input) {
+        return "Dude hear: " + input;
+    }
+
     public static void main(String[] args) {
         String filePath = "data/data.csv";
         new Dude(filePath).run();
