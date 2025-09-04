@@ -1,11 +1,11 @@
 package dude.command;
 
+import java.util.List;
+
 import dude.storage.Storage;
 import dude.task.Task;
 import dude.tasklist.TaskList;
 import dude.ui.Ui;
-
-import java.util.List;
 
 /**
  * Command to find tasks that match a keyword.

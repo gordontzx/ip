@@ -1,8 +1,8 @@
 package dude.command;
 
-import dude.task.EventTask;
 import dude.exception.InvalidArgumentException;
 import dude.storage.Storage;
+import dude.task.EventTask;
 import dude.tasklist.TaskList;
 import dude.ui.Ui;
 

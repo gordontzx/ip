@@ -16,6 +16,10 @@ public class Dude {
     private final TaskList tasks;
     private final Storage storage;
 
+    /**
+     * Returns a chatbot object.
+     * @param filePath file path for the data file
+     */
     public Dude(String filePath) {
         this.ui = new Ui();
         this.tasks = new TaskList();

@@ -8,10 +8,10 @@ import java.time.format.DateTimeParseException;
  */
 public class DeadlineTask extends Task {
     private static final String[] MONTHS = {
-            "Jan", "Feb", "Mar",
-            "Apr", "May", "Jun",
-            "Jul", "Aug", "Sep",
-            "Oct", "Nov", "Dec"
+        "Jan", "Feb", "Mar",
+        "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep",
+        "Oct", "Nov", "Dec"
     };
 
     private LocalDate deadline;
@@ -20,7 +20,14 @@ public class DeadlineTask extends Task {
         this(description, false, deadline);
     }
 
-    public DeadlineTask(String description, boolean isDone, String deadline) throws DateTimeParseException  {
+    /**
+     * Returns DeadlineTask object.
+     * @param description task description.
+     * @param isDone denotes whether the task is done.
+     * @param deadline deadline of the task.
+     * @throws DateTimeParseException error with DateTime format.
+     */
+    public DeadlineTask(String description, boolean isDone, String deadline) throws DateTimeParseException {
         super(description, isDone);
         this.deadline = LocalDate.parse(deadline);
     }

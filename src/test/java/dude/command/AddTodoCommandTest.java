@@ -1,10 +1,11 @@
 package dude.command;
 
-import dude.exception.InvalidArgumentException;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+
+import dude.exception.InvalidArgumentException;
 
 public class AddTodoCommandTest {
     @Test
@@ -15,7 +16,6 @@ public class AddTodoCommandTest {
     @Test
     public void invalidCommandTest() {
         AddTodoCommand invalidArgs = new AddTodoCommand("");
-        assertThrows(InvalidArgumentException.class,
-                () -> invalidArgs.execute(null, null, null));
+        assertThrows(InvalidArgumentException.class, () -> invalidArgs.execute(null, null, null));
     }
 }

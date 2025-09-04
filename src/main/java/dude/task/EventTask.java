@@ -11,6 +11,13 @@ public class EventTask extends Task {
         this(description, false, start, end);
     }
 
+    /**
+     * Returns a EventTask object.
+     * @param description task description.
+     * @param isDone denotes whether the task is done.
+     * @param start start time of the task.
+     * @param end end time of the task.
+     */
     public EventTask(String description, boolean isDone, String start, String end) {
         super(description, isDone);
         this.start = start;

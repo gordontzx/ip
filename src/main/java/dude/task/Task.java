@@ -11,6 +11,11 @@ public abstract class Task {
         this(description, false);
     }
 
+    /**
+     * Returns a Task object.
+     * @param description task description.
+     * @param isDone denotes whether the task is done.
+     */
     public Task(String description, boolean isDone) {
         this.description = description;
         this.isDone = isDone;

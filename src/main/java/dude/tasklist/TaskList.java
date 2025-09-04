@@ -1,16 +1,16 @@
 package dude.tasklist;
 
-import dude.exception.InvalidArgumentException;
-import dude.task.Task;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import dude.exception.InvalidArgumentException;
+import dude.task.Task;
 
 /**
  * Object that stores the list of tasks.
  */
 public class TaskList {
-    List<Task> tasks;
+    private List<Task> tasks;
 
     public TaskList() {
         this.tasks = new ArrayList<>();

@@ -1,6 +1,16 @@
 package dude.parser;
 
-import dude.command.*;
+import dude.command.AddDeadlineCommand;
+import dude.command.AddEventCommand;
+import dude.command.AddTodoCommand;
+import dude.command.Command;
+import dude.command.DeleteCommand;
+import dude.command.ExitCommand;
+import dude.command.FindCommand;
+import dude.command.InvalidCommand;
+import dude.command.ListCommand;
+import dude.command.MarkCommand;
+import dude.command.UnmarkCommand;
 
 /**
  * Contains method(s) that parse commands sent by the user.
@@ -20,16 +30,16 @@ public class Parser {
                       : "";
 
         return switch (cmd) {
-            case "bye"      ->  new ExitCommand();
-            case "list"     ->  new ListCommand();
-            case "todo"     ->  new AddTodoCommand(args);
-            case "deadline" ->  new AddDeadlineCommand(args);
-            case "event"    ->  new AddEventCommand(args);
-            case "mark"     ->  new MarkCommand(args);
-            case "unmark"   ->  new UnmarkCommand(args);
-            case "delete"   ->  new DeleteCommand(args);
-            case "find"     ->  new FindCommand(args);
-            default         ->  new InvalidCommand();
+        case "bye" -> new ExitCommand();
+        case "list" -> new ListCommand();
+        case "todo" -> new AddTodoCommand(args);
+        case "deadline" -> new AddDeadlineCommand(args);
+        case "event" -> new AddEventCommand(args);
+        case "mark" -> new MarkCommand(args);
+        case "unmark" -> new UnmarkCommand(args);
+        case "delete" -> new DeleteCommand(args);
+        case "find" -> new FindCommand(args);
+        default -> new InvalidCommand();
         };
     }
 }
