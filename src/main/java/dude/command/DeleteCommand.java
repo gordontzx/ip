@@ -3,7 +3,6 @@ package dude.command;
 import dude.exception.InvalidArgumentException;
 import dude.storage.Storage;
 import dude.tasklist.TaskList;
-import dude.ui.Ui;
 
 /**
  * Command that deletes a task.
@@ -14,7 +13,7 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) throws InvalidArgumentException {
+    public String execute(TaskList tasks, Storage storage) throws InvalidArgumentException {
         try {
             String res = tasks.deleteTask(Integer.parseInt(args));
             storage.write(tasks.toCsvString());

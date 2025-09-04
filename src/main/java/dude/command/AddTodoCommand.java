@@ -4,7 +4,6 @@ import dude.exception.InvalidArgumentException;
 import dude.storage.Storage;
 import dude.task.TodoTask;
 import dude.tasklist.TaskList;
-import dude.ui.Ui;
 
 /**
  * Command that adds todo tasks.
@@ -15,7 +14,7 @@ public class AddTodoCommand extends AddCommand {
     }
 
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) throws InvalidArgumentException {
+    public String execute(TaskList tasks, Storage storage) throws InvalidArgumentException {
         if (args.isEmpty()) {
             throw new InvalidArgumentException("Error! Usage: todo TASK_NAME");
         }

@@ -2,7 +2,6 @@ package dude.command;
 
 import dude.storage.Storage;
 import dude.tasklist.TaskList;
-import dude.ui.Ui;
 
 /**
  * Object to represent an invalid/unknown command.
@@ -13,7 +12,7 @@ public class InvalidCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Storage storage) {
         return "Unknown command!";
     }
 

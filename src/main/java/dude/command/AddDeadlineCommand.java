@@ -6,7 +6,6 @@ import dude.exception.InvalidArgumentException;
 import dude.storage.Storage;
 import dude.task.DeadlineTask;
 import dude.tasklist.TaskList;
-import dude.ui.Ui;
 
 /**
  * Command that adds deadline tasks.
@@ -17,7 +16,7 @@ public class AddDeadlineCommand extends AddCommand {
     }
 
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Storage storage) {
         String[] parts = args.split(" /by ");
         if (parts.length != 2) {
             throw new InvalidArgumentException("Error! Usage: deadline TASK_NAME /by YYYY-MM-DD");

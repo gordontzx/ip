@@ -2,7 +2,6 @@ package dude.command;
 
 import dude.storage.Storage;
 import dude.tasklist.TaskList;
-import dude.ui.Ui;
 
 /**
  * Command that lists stored tasks.
@@ -13,7 +12,7 @@ public class ListCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Storage storage) {
         return tasks.toString();
     }
 

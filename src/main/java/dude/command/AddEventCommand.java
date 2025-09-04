@@ -4,7 +4,6 @@ import dude.exception.InvalidArgumentException;
 import dude.storage.Storage;
 import dude.task.EventTask;
 import dude.tasklist.TaskList;
-import dude.ui.Ui;
 
 /**
  * Command that adds event tasks.
@@ -15,7 +14,7 @@ public class AddEventCommand extends AddCommand {
     }
 
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Storage storage) {
         int fromIndex = args.indexOf(" /from ");
         int toIndex = args.indexOf(" /to ");
         if (fromIndex == -1 || toIndex == -1

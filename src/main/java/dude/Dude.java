@@ -12,7 +12,6 @@ import dude.ui.Ui;
  * Run the program from this file to start the chatbot.
  */
 public class Dude {
-    private final Ui ui;
     private final TaskList tasks;
     private final Storage storage;
 
@@ -21,31 +20,9 @@ public class Dude {
      * @param filePath file path for the data file
      */
     public Dude(String filePath) {
-        this.ui = new Ui();
         this.tasks = new TaskList();
         this.storage = new Storage(filePath);
         storage.read(tasks);
-    }
-
-    private void run() {
-        ui.printWelcome();
-
-        while (true) {
-            String input = ui.read();
-            Command cmd = Parser.parse(input);
-
-            if (cmd.isExit()) {
-                break;
-            }
-
-            try {
-                cmd.execute(tasks, ui, storage);
-            } catch (DudeException e) {
-                ui.print(e.getMessage());
-            }
-        }
-
-        ui.printBye();
     }
 
     /**
@@ -59,7 +36,7 @@ public class Dude {
             return "bye!";
         }
         try {
-            return cmd.execute(tasks, ui, storage);
+            return cmd.execute(tasks, storage);
         } catch (DudeException e) {
             return e.getMessage();
         }
@@ -67,6 +44,5 @@ public class Dude {
 
     public static void main(String[] args) {
         String filePath = "data/data.csv";
-        new Dude(filePath).run();
     }
 }
