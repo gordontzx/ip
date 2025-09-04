@@ -1,3 +1,5 @@
+package dude.gui;
+
 import java.io.IOException;
 
 import dude.Dude;

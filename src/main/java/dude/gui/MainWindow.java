@@ -1,3 +1,5 @@
+package dude.gui;
+
 import dude.Dude;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
