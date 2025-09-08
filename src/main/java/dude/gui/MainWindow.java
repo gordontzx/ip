@@ -64,7 +64,10 @@ public class MainWindow extends AnchorPane {
         userInput.clear();
 
         if (cmd.isExit()) {
-            Platform.exit();
+            // Let user read message before closing
+            PauseTransition delay = new PauseTransition(Duration.seconds(1));
+            delay.setOnFinished(event -> Platform.exit());
+            delay.play();
         }
     }
 }
