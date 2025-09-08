@@ -39,8 +39,4 @@ public class Dude {
             return e.getMessage();
         }
     }
-
-    public static void main(String[] args) {
-        String filePath = "data/data.csv";
-    }
 }
