@@ -16,6 +16,6 @@ public class AddTodoCommandTest {
     @Test
     public void invalidCommandTest() {
         AddTodoCommand invalidArgs = new AddTodoCommand("");
-        assertThrows(InvalidArgumentException.class, () -> invalidArgs.execute(null, null, null));
+        assertThrows(InvalidArgumentException.class, () -> invalidArgs.execute(null, null));
     }
 }
