@@ -5,11 +5,9 @@ import dude.exception.DudeException;
 import dude.parser.Parser;
 import dude.storage.Storage;
 import dude.tasklist.TaskList;
-import dude.ui.Ui;
 
 /**
- * Chatbot.
- * Run the program from this file to start the chatbot.
+ * Class that encapsulates the chatbot.
  */
 public class Dude {
     private final TaskList tasks;

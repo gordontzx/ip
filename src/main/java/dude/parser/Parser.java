@@ -24,8 +24,12 @@ public class Parser {
      */
     public static Command parse(String input) {
         int firstSpace = input.indexOf(" ");
-        String cmd = firstSpace == -1 ? input : input.substring(0, firstSpace);
-        String args = firstSpace != -1 && firstSpace + 1 < input.length()
+
+        boolean hasSpace = firstSpace != -1;
+        boolean hasTrailingCharsAfterFirstSpace = firstSpace + 1 < input.length();
+
+        String cmd = !hasSpace ? input : input.substring(0, firstSpace);
+        String args = hasSpace && hasTrailingCharsAfterFirstSpace
                       ? input.substring(firstSpace + 1)
                       : "";
 
