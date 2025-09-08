@@ -90,6 +90,7 @@ public class Storage {
     private Task parseFileLine(String line) {
         String[] parts = line.split(DELIMITER);
         boolean isDone = parts[1].equals("1");
+
         return switch (parts[0]) {
         case "T" -> new TodoTask(parts[2], isDone);
         case "D" -> new DeadlineTask(parts[2], isDone, parts[3]);
