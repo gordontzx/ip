@@ -15,10 +15,12 @@ import javafx.stage.Stage;
 public class Main extends Application {
     private static final String FILE_PATH = "data/data.csv";
 
-    private Dude dude = new Dude(FILE_PATH);
+    private Dude dude;
 
     @Override
     public void start(Stage stage) {
+        dude = new Dude(FILE_PATH);
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load();

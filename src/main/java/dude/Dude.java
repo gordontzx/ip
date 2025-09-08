@@ -2,7 +2,6 @@ package dude;
 
 import dude.command.Command;
 import dude.exception.DudeException;
-import dude.parser.Parser;
 import dude.storage.Storage;
 import dude.tasklist.TaskList;
 
@@ -25,18 +24,22 @@ public class Dude {
 
     /**
      * Return response to user input.
-     * @param input user input.
+     * @param cmd Command to execute.
      * @return chatbot response.
      */
-    public String getResponse(String input) {
-        Command cmd = Parser.parse(input);
-        if (cmd.isExit()) {
-            return "bye!";
-        }
+    public String getResponse(Command cmd) {
         try {
             return cmd.execute(tasks, storage);
         } catch (DudeException e) {
             return e.getMessage();
         }
+    }
+
+    /**
+     * Get initial hello message.
+     * @return hello message.
+     */
+    public static String getHelloMessage() {
+        return "Hello! I'm Dude.\nWhat can I do for you?";
     }
 }
