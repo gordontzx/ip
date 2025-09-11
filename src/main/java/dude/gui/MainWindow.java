@@ -2,6 +2,7 @@ package dude.gui;
 
 import dude.Dude;
 import dude.command.Command;
+import dude.command.ExitCommand;
 import dude.parser.Parser;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
@@ -64,6 +65,8 @@ public class MainWindow extends AnchorPane {
         userInput.clear();
 
         if (cmd.isExit()) {
+            assert cmd instanceof ExitCommand : "Command is instance of ExitCommand when exiting.";
+
             // Let user read message before closing
             PauseTransition delay = new PauseTransition(Duration.seconds(1));
             delay.setOnFinished(event -> Platform.exit());
