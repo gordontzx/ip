@@ -30,6 +30,9 @@ public class Parser {
         assert !cmd.contains(" ") : "Command keyword contains no spaces.";
         assert cmd.length() + args.length() <= input.length() : "Length of cmd and args do not exceed length of input.";
 
+        assert !cmd.contains(" ") : "Command keyword contains no spaces.";
+        assert cmd.length() + args.length() <= input.length() : "Length of cmd and args do not exceed length of input.";
+
         return switch (cmd) {
         case "bye" -> new ExitCommand();
         case "list" -> new ListCommand();
