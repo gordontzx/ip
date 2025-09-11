@@ -23,7 +23,7 @@ public class Parser {
      * @return Command object that represents the command to be executed.
      */
     public static Command parse(String input) {
-        String[] parts = split(input);
+        String[] parts = splitInput(input);
         String cmd = parts[0];
         String args = parts[1];
 
@@ -52,7 +52,7 @@ public class Parser {
      * @param input user input.
      * @return array containing the parts.
      */
-    private static String[] split(String input) {
+    private static String[] splitInput(String input) {
         int firstSpace = input.indexOf(" ");
 
         boolean hasSpace = firstSpace != -1;
