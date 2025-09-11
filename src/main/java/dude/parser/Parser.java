@@ -23,15 +23,9 @@ public class Parser {
      * @return Command object that represents the command to be executed.
      */
     public static Command parse(String input) {
-        int firstSpace = input.indexOf(" ");
-
-        boolean hasSpace = firstSpace != -1;
-        boolean hasTrailingCharsAfterFirstSpace = firstSpace + 1 < input.length();
-
-        String cmd = !hasSpace ? input : input.substring(0, firstSpace);
-        String args = hasSpace && hasTrailingCharsAfterFirstSpace
-                      ? input.substring(firstSpace + 1)
-                      : "";
+        String[] parts = split(input);
+        String cmd = parts[0];
+        String args = parts[1];
 
         assert !cmd.contains(" ") : "Command keyword contains no spaces.";
         assert cmd.length() + args.length() <= input.length() : "Length of cmd and args do not exceed length of input.";
@@ -48,5 +42,24 @@ public class Parser {
         case "find" -> new FindCommand(args);
         default -> new InvalidCommand();
         };
+    }
+
+    /**
+     * Split input into cmd and arg parts.
+     * @param input user input.
+     * @return array containing the parts.
+     */
+    private static String[] split(String input) {
+        int firstSpace = input.indexOf(" ");
+
+        boolean hasSpace = firstSpace != -1;
+        boolean hasTrailingCharsAfterFirstSpace = firstSpace + 1 < input.length();
+
+        String cmd = hasSpace ? input.substring(0, firstSpace) : input;
+        String args = hasSpace && hasTrailingCharsAfterFirstSpace
+                ? input.substring(firstSpace + 1)
+                : "";
+
+        return new String[]{cmd, args};
     }
 }
