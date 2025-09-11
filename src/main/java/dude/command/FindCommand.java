@@ -12,8 +12,14 @@ import dude.tasklist.TaskList;
  * Command to find tasks that match a keyword.
  */
 public class FindCommand extends Command {
+    private static final String FORMAT = "find KEYWORD";
+
     public FindCommand(String args) {
         super(args);
+    }
+
+    public static String getFormat() {
+        return FORMAT;
     }
 
     @Override

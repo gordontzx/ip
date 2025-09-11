@@ -9,11 +9,17 @@ import dude.tasklist.TaskList;
  * Command that adds event tasks.
  */
 public class AddEventCommand extends AddCommand {
+    private static final String FORMAT = "event TASK_NAME /from START /to END";
+
     private static final String FROM_FLAG = " /from ";
     private static final String TO_FLAG = " /to ";
 
     public AddEventCommand(String arg) {
         super(arg);
+    }
+
+    public static String getFormat() {
+        return FORMAT;
     }
 
     @Override

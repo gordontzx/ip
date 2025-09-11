@@ -25,7 +25,6 @@ public abstract class Command {
 
     /**
      * Checks if command is an exit command.
-     *
      * @return true if and only if this object is an instance of ExitCommand.
      */
     public abstract boolean isExit();

@@ -1,16 +1,6 @@
 package dude.parser;
 
-import dude.command.AddDeadlineCommand;
-import dude.command.AddEventCommand;
-import dude.command.AddTodoCommand;
-import dude.command.Command;
-import dude.command.DeleteCommand;
-import dude.command.ExitCommand;
-import dude.command.FindCommand;
-import dude.command.InvalidCommand;
-import dude.command.ListCommand;
-import dude.command.MarkCommand;
-import dude.command.UnmarkCommand;
+import dude.command.*;
 
 /**
  * Contains method(s) that parse commands sent by the user.
@@ -43,6 +33,7 @@ public class Parser {
         case "unmark" -> new UnmarkCommand(args);
         case "delete" -> new DeleteCommand(args);
         case "find" -> new FindCommand(args);
+        case "help" -> new HelpCommand(args);
         default -> new InvalidCommand();
         };
     }
