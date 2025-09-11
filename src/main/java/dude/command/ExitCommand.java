@@ -7,8 +7,14 @@ import dude.tasklist.TaskList;
  * Command to exit the program.
  */
 public class ExitCommand extends Command {
+    public static final String FORMAT = "bye";
+
     public ExitCommand() {
         super("");
+    }
+
+    public static String getFormat() {
+        return FORMAT;
     }
 
     @Override

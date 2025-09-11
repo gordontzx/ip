@@ -8,8 +8,14 @@ import dude.tasklist.TaskList;
  * Command that marks a task as done.
  */
 public class MarkCommand extends Command {
+    private static final String FORMAT = "mark TASK_INDEX";
+
     public MarkCommand(String args) {
         super(args);
+    }
+
+    public static String getFormat() {
+        return FORMAT;
     }
 
     @Override

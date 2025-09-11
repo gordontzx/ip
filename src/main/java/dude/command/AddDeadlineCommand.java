@@ -11,8 +11,14 @@ import dude.tasklist.TaskList;
  * Command that adds deadline tasks.
  */
 public class AddDeadlineCommand extends AddCommand {
+    private static final String FORMAT = "deadline TASK_NAME /by YYYY-MM-DD";
+
     public AddDeadlineCommand(String args) {
         super(args);
+    }
+
+    public static String getFormat() {
+        return FORMAT;
     }
 
     @Override

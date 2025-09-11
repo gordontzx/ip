@@ -8,8 +8,14 @@ import dude.tasklist.TaskList;
  * Command that marks a task as not done.
  */
 public class UnmarkCommand extends Command {
+    private static final String FORMAT = "unmark TASK_INDEX";
+
     public UnmarkCommand(String args) {
         super(args);
+    }
+
+    public static String getFormat() {
+        return FORMAT;
     }
 
     @Override

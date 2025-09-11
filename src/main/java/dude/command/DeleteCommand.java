@@ -8,8 +8,14 @@ import dude.tasklist.TaskList;
  * Command that deletes a task.
  */
 public class DeleteCommand extends Command {
+    private static final String FORMAT = "delete TASK_INDEX";
+
     public DeleteCommand(String args) {
         super(args);
+    }
+
+    public static String getFormat() {
+        return FORMAT;
     }
 
     @Override

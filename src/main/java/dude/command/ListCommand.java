@@ -7,8 +7,14 @@ import dude.tasklist.TaskList;
  * Command that lists stored tasks.
  */
 public class ListCommand extends Command {
+    private static final String FORMAT = "list";
+
     public ListCommand() {
         super("");
+    }
+
+    public static String getFormat() {
+        return FORMAT;
     }
 
     @Override
