@@ -2,6 +2,8 @@ package dude.tasklist;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import dude.exception.InvalidArgumentException;
 import dude.task.Task;
@@ -84,13 +86,9 @@ public class TaskList {
      * @return List of tasks.
      */
     public List<Task> getMatches(String keyword) {
-        List<Task> res = new ArrayList<>();
-        for (Task task : tasks) {
-            if (task.getDescription().contains(keyword)) {
-                res.add(task);
-            }
-        }
-        return res;
+        return tasks.stream()
+                .filter(t -> t.getDescription().contains(keyword))
+                .toList();
     }
 
     /**
@@ -99,12 +97,9 @@ public class TaskList {
      * @return string in csv format.
      */
     public String toCsvString() {
-        StringBuilder sb = new StringBuilder();
-        for (Task t : tasks) {
-            sb.append(t.toCsvString());
-            sb.append('\n');
-        }
-        return sb.toString();
+        return tasks.stream()
+                .map(Task::toCsvString)
+                .reduce("", (acc, s) -> acc + s + '\n');
     }
 
     @Override
@@ -113,11 +108,11 @@ public class TaskList {
             return "List is empty!";
         }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%d.%s", 1, tasks.get(0)));
-        for (int i = 1; i < tasks.size(); ++i) {
-            sb.append(String.format("\n%d.%s", i + 1, tasks.get(i)));
-        }
-        return sb.toString();
+        String first = String.format("%d.%s", 1, tasks.get(0));
+        String remaining = IntStream.range(1, tasks.size())
+                .mapToObj(i -> String.format("\n%d.%s", i + 1, tasks.get(i)))
+                .collect(Collectors.joining());
+
+        return first + remaining;
     }
 }
