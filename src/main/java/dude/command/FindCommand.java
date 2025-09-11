@@ -1,6 +1,8 @@
 package dude.command;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import dude.storage.Storage;
 import dude.task.Task;
@@ -17,12 +19,12 @@ public class FindCommand extends Command {
     @Override
     public String execute(TaskList tasks, Storage storage) {
         List<Task> matches = args.isEmpty() ? List.of() : tasks.getMatches(args);
-        StringBuilder sb = new StringBuilder("Here are the matching tasks in your list:");
-        int count = 0;
-        for (Task task : matches) {
-            sb.append(String.format("\n%d.%s", ++count, task.toString()));
-        }
-        return sb.toString();
+
+        String body = IntStream.range(0, matches.size())
+                .mapToObj(i -> String.format("\n%d.%s", i + 1, matches.get(i).toString()))
+                .collect(Collectors.joining());
+
+        return "Here are the matching tasks in your list:" + body;
     }
 
     @Override
