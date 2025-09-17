@@ -3,8 +3,6 @@ package dude.command;
 import dude.storage.Storage;
 import dude.tasklist.TaskList;
 
-import java.util.List;
-
 /**
  * Command that sends help on using commands.
  */

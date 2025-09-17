@@ -1,6 +1,18 @@
 package dude.parser;
 
-import dude.command.*;
+
+import dude.command.AddDeadlineCommand;
+import dude.command.AddEventCommand;
+import dude.command.AddTodoCommand;
+import dude.command.Command;
+import dude.command.DeleteCommand;
+import dude.command.ExitCommand;
+import dude.command.FindCommand;
+import dude.command.HelpCommand;
+import dude.command.InvalidCommand;
+import dude.command.ListCommand;
+import dude.command.MarkCommand;
+import dude.command.UnmarkCommand;
 
 /**
  * Contains method(s) that parse commands sent by the user.
@@ -16,9 +28,6 @@ public class Parser {
         String[] parts = splitInput(input);
         String cmd = parts[0];
         String args = parts[1];
-
-        assert !cmd.contains(" ") : "Command keyword contains no spaces.";
-        assert cmd.length() + args.length() <= input.length() : "Length of cmd and args do not exceed length of input.";
 
         assert !cmd.contains(" ") : "Command keyword contains no spaces.";
         assert cmd.length() + args.length() <= input.length() : "Length of cmd and args do not exceed length of input.";
@@ -39,7 +48,7 @@ public class Parser {
     }
 
     /**
-     * Split input into cmd and arg parts.
+     * Splits input into cmd and arg parts.
      * @param input user input.
      * @return array containing the parts.
      */

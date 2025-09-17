@@ -23,7 +23,7 @@ public class Dude {
     }
 
     /**
-     * Return response to user input.
+     * Returns response to user input.
      * @param cmd Command to execute.
      * @return chatbot response.
      */
@@ -36,7 +36,7 @@ public class Dude {
     }
 
     /**
-     * Get initial hello message.
+     * Gets initial hello message.
      * @return hello message.
      */
     public static String getHelloMessage() {

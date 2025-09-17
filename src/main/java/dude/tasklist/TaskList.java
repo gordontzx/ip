@@ -20,7 +20,6 @@ public class TaskList {
 
     /**
      * Adds a task into the list.
-     *
      * @param task Task to be added.
      * @return Feedback indicating task added and number of tasks in the list after adding.
      */
@@ -32,7 +31,6 @@ public class TaskList {
 
     /**
      * Marks task with given index as done.
-     *
      * @param idx the index of the task to be marked.
      * @throws InvalidArgumentException
      */
@@ -48,7 +46,6 @@ public class TaskList {
 
     /**
      * Unmarks task with given index as done.
-     *
      * @param idx the index of the task to be unmarked.
      * @throws InvalidArgumentException
      */
@@ -64,7 +61,6 @@ public class TaskList {
 
     /**
      * Deletes task with given index.
-     *
      * @param idx the index of the task to be deleted.
      * @throws InvalidArgumentException
      */
@@ -81,7 +77,6 @@ public class TaskList {
 
     /**
      * Gets a list of tasks whose description contains keyword.
-     *
      * @param keyword String to match task descriptions.
      * @return List of tasks.
      */
@@ -93,7 +88,6 @@ public class TaskList {
 
     /**
      * Returns a csv formatted string for saving.
-     *
      * @return string in csv format.
      */
     public String toCsvString() {

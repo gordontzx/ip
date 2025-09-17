@@ -39,7 +39,6 @@ public abstract class Task {
 
     /**
      * Returns a char indicating whether the task is completed.
-     *
      * @return 'X' if task is done, ' ' otherwise.
      */
     public char getStatusIcon() {
@@ -47,8 +46,7 @@ public abstract class Task {
     }
 
     /**
-     * Fetch the task represented as a string for storage in csv format.
-     *
+     * Fetches the task represented as a string for storage in csv format.
      * @return A string in csv format.
      */
     public String toCsvString() {
