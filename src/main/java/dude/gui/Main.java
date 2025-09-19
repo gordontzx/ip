@@ -14,6 +14,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
     private static final String FILE_PATH = "data/data.csv";
+    private static final String WINDOW_TITLE = "Dude";
 
     private Dude dude;
 
@@ -27,6 +28,8 @@ public class Main extends Application {
             Scene scene = new Scene(ap);
             stage.setScene(scene);
             fxmlLoader.<MainWindow>getController().setDude(dude); // inject the Duke instance
+
+            stage.setTitle(WINDOW_TITLE);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
