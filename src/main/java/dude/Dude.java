@@ -40,6 +40,7 @@ public class Dude {
      * @return hello message.
      */
     public static String getHelloMessage() {
-        return "Hello! I'm Dude.\nWhat can I do for you?";
+        return "Hello! I'm Dude.\nWhat can I do for you?"
+                + "\nType \"help\" to see a list of commands.";
     }
 }
