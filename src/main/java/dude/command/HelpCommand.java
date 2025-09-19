@@ -19,7 +19,8 @@ public class HelpCommand extends Command {
 
     @Override
     public String execute(TaskList tasks, Storage storage) {
-        return HelpCommand.getFormat() + '\n'
+        return "Here are the commands you can execute:\n"
+                + HelpCommand.getFormat() + '\n'
                 + ListCommand.getFormat() + '\n'
                 + ExitCommand.getFormat() + '\n'
                 + AddDeadlineCommand.getFormat() + '\n'
