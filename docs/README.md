@@ -1,34 +1,41 @@
-# **Dude** User Guide
+# **Shef** User Guide
 
 ![ui](Ui.png)
 
-This is a chatbot that keeps track of your tasks.
+# Shef is a chatbot that manages your tasks.
 
-## Features
+# Getting started
+1. Ensure you have java 17 installed on your computer.
+2. Download the latest jar from [<ins>here</ins>](https://github.com/gordontzx/ip/releases).
+3. Copy the file to the folder you want to use as the home folder.
+4. Open a command terminal and, `cd` into the folder containing the jar file you just downloaded, and run the following
+command: `java -jar shef.jar` to start the application.
 
-## Viewing help: <ins>help</ins>
-Lists out all the available commands.<br/>
-Usage: help<br/>
+# Features
+
+## Viewing help: `help`
+Lists out all the available commands. <br/>
+Usage: `help` <br/>
 Expected output:
 ```
 Here are the commands you can execute:
 // list of commands
 ```
 
-## Listing all tasks: <ins>list</ins>
-Lists out all the tasks stored by the user.<br/>
-Usage: list<br/>
+## Listing all tasks: `list`
+Lists out all the tasks stored by the user. <br/>
+Usage: `list` <br/>
 Example output:
 ```
 1.[T][ ] task 1
 2.[T][ ] task 2
 ```
 
-## Finding tasks by keyword: <ins>find</ins>
+## Finding tasks by keyword: `find`
 Finds tasks by the keyword in the task description.<br/>
-Usage: find KEYWORD<br/>
+Usage: `find KEYWORD` <br/>
 <br/>
-Example: find book<br/>
+Example: `find book` <br/>
 Example output:
 ```
 Here are the matching tasks in your list:
@@ -36,11 +43,11 @@ Here are the matching tasks in your list:
 2.[T][ ] return book
 ```
 
-## Adding a todo task: <ins>todo</ins>
-Adds a todo type task.<br/>
-Usage: todo<br/>
+## Adding a todo task: `todo`
+Adds a todo type task. <br/>
+Usage: `todo` <br/>
 <br/>
-Example: add todo borrow book<br/>
+Example: `add todo borrow book` <br/>
 Example output:
 ```
 Got it. I've added this task:
@@ -48,11 +55,11 @@ Got it. I've added this task:
 You now have 1 task in your list.
 ```
 
-## Adding a deadline task: <ins>deadline</ins>
-Adds a deadline type task that has a given deadline in YYYY-MM-DD format.<br/>
-Usage: deadline TASK_NAME /by YYYY-MM-DD<br/>
+## Adding a deadline task: `deadline`
+Adds a deadline type task that has a given deadline in YYYY-MM-DD format. <br/>
+Usage: `deadline TASK_NAME /by YYYY-MM-DD` <br/>
 <br/>
-Example: deadline shower /by 2025-12-31<br/>
+Example: `deadline shower /by 2025-12-31` <br/>
 Example output:
 ```
 Got it. I've added this task:
@@ -60,11 +67,11 @@ Got it. I've added this task:
 You now have 2 tasks in your list.
 ```
 
-## Adding a event task: <ins>event</ins>
-Adds an event type task which starts and end at specified times.<br/>
-Usage: event TASK_NAME /from START /to END<br/>
+## Adding a event task: `event`
+Adds an event type task which starts and end at specified times. <br/>
+Usage: `event TASK_NAME /from START /to END` <br/>
 <br/>
-Example: event meeting /from 2pm /to 3pm<br/>
+Example: `event meeting /from 2pm /to 3pm` <br/>
 Example output:
 ```
 Got it. I've added this task:
@@ -72,33 +79,33 @@ Got it. I've added this task:
 You now have 3 tasks in your list.
 ```
 
-## Marking a task as done: <ins>mark</ins>
-Marks a task as done by index.<br/>
-Usage: mark TASK_INDEX<br/>
+## Marking a task as done: `mark`
+Marks a task as done by index. <br/>
+Usage: `mark TASK_INDEX` <br/>
 <br/>
-Example: mark 1<br/>
+Example: `mark 1` <br/>
 Example output:
 ```
 Nice! I've marked this task ad done:
   [T][X] borrow book
 ```
 
-## Unmarking a task as done: <ins>unmark</ins>
-Unmarks a task as done by index.<br/>
-Usage: unmark TASK_INDEX<br/>
+## Unmarking a task as done: `unmark`
+Unmarks a task as done by index. <br/>
+Usage: `unmark TASK_INDEX` <br/>
 <br/>
-Example: unmark 1<br/>
+Example: `unmark 1` <br/>
 Example output:
 ```
 Ok. I've marked this task as not done yet:
   [T][ ] borrow book
 ```
 
-## Deleting a task: <ins>delete</ins>
-Deletes a task by index.<br/>
-Usage: delete TASK_INDEX<br/>
+## Deleting a task: `delete`
+Deletes a task by index. <br/>
+Usage: `delete TASK_INDEX` <br/>
 <br/>
-Example: delete 5<br/>
+Example: `delete 5` <br/>
 Example output:
 ```
 Noted. I've removed the task:
@@ -106,9 +113,9 @@ Noted. I've removed the task:
 You now have 2 tasks in the list.
 ```
 
-## Exiting the app: <ins>bye</ins>
-Exits and closes the app.<br/>
-Usage: bye
+## Exiting the app: `bye`
+Exits and closes the app. <br/>
+Usage: `bye`
 Expected output:
 ```
 bye!
