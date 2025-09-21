@@ -27,6 +27,7 @@ Lists out all the tasks stored by the user. <br/>
 Usage: `list` <br/>
 Example output:
 ```
+Here are the tasks in your list:
 1.[T][ ] task 1
 2.[T][ ] task 2
 ```
