@@ -25,7 +25,7 @@ public class DeleteCommand extends Command {
             storage.write(tasks.toCsvString());
             return res;
         } catch (NumberFormatException e) {
-            throw new InvalidArgumentException("Error! Usage: delete TASK_INDEX");
+            throw new InvalidArgumentException("Error! Usage: " + FORMAT);
         }
     }
 

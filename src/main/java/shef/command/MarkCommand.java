@@ -26,7 +26,7 @@ public class MarkCommand extends Command {
             storage.write(tasks.toCsvString());
             return res;
         } catch (NumberFormatException e) {
-            throw new InvalidArgumentException("Error! Usage: mark TASK_INDEX");
+            throw new InvalidArgumentException("Error! Usage: " + FORMAT);
         }
     }
 

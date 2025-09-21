@@ -25,7 +25,7 @@ public class UnmarkCommand extends Command {
             storage.write(tasks.toCsvString());
             return res;
         } catch (NumberFormatException e) {
-            throw new InvalidArgumentException("Error! Usage: unmark TASK_INDEX");
+            throw new InvalidArgumentException("Error! Usage: " + FORMAT);
         }
     }
 

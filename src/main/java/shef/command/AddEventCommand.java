@@ -34,7 +34,7 @@ public class AddEventCommand extends AddCommand {
         boolean hasToArg = hasFlags && (toIndex != args.length() - TO_FLAG.length());
 
         if (!hasFlags || !hasTaskDesc || !hasFromArg || !hasToArg) {
-            throw new InvalidArgumentException("Error! Usage: event TASK_NAME /from START /to END");
+            throw new InvalidArgumentException("Error! Usage: " + FORMAT);
         }
 
         // Create task

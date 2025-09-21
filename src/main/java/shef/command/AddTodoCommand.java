@@ -22,7 +22,7 @@ public class AddTodoCommand extends AddCommand {
     @Override
     public String execute(TaskList tasks, Storage storage) throws InvalidArgumentException {
         if (args.isEmpty()) {
-            throw new InvalidArgumentException("Error! Usage: todo TASK_NAME");
+            throw new InvalidArgumentException("Error! Usage: " + FORMAT);
         }
 
         String res = tasks.add(new TodoTask(args));

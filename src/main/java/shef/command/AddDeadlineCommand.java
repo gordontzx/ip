@@ -25,7 +25,7 @@ public class AddDeadlineCommand extends AddCommand {
     public String execute(TaskList tasks, Storage storage) {
         String[] parts = args.split(" /by ");
         if (parts.length != 2) {
-            throw new InvalidArgumentException("Error! Usage: deadline TASK_NAME /by YYYY-MM-DD");
+            throw new InvalidArgumentException("Error! Usage: " + FORMAT);
         }
 
         try {
@@ -33,7 +33,7 @@ public class AddDeadlineCommand extends AddCommand {
             storage.write(tasks.toCsvString());
             return res;
         } catch (DateTimeParseException e) {
-            throw new InvalidArgumentException("Invalid Date! Usage: deadline TASK_NAME /by YYYY-MM-DD");
+            throw new InvalidArgumentException("Invalid Date! Usage: " + FORMAT);
         }
     }
 }
