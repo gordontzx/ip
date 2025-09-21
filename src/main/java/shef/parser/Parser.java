@@ -29,19 +29,30 @@ public class Parser {
         String cmd = parts[0];
         String args = parts[1];
 
-        return switch (cmd) {
-        case "bye" -> new ExitCommand();
-        case "list" -> new ListCommand();
-        case "todo" -> new AddTodoCommand(args);
-        case "deadline" -> new AddDeadlineCommand(args);
-        case "event" -> new AddEventCommand(args);
-        case "mark" -> new MarkCommand(args);
-        case "unmark" -> new UnmarkCommand(args);
-        case "delete" -> new DeleteCommand(args);
-        case "find" -> new FindCommand(args);
-        case "help" -> new HelpCommand(args);
-        default -> new InvalidCommand();
-        };
+        switch (cmd) {
+        case "bye":
+            return new ExitCommand();
+        case "list":
+            return new ListCommand();
+        case "todo":
+            return new AddTodoCommand(args);
+        case "deadline":
+            return new AddDeadlineCommand(args);
+        case "event":
+            return new AddEventCommand(args);
+        case "mark":
+            return new MarkCommand(args);
+        case "unmark":
+            return new UnmarkCommand(args);
+        case "delete":
+            return new DeleteCommand(args);
+        case "find":
+            return new FindCommand(args);
+        case "help":
+            return new HelpCommand(args);
+        default:
+            return new InvalidCommand();
+        }
     }
 
     /**
@@ -57,8 +68,8 @@ public class Parser {
 
         String cmd = hasSpace ? input.substring(0, firstSpace) : input;
         String args = hasSpace && hasTrailingCharsAfterFirstSpace
-                ? input.substring(firstSpace + 1)
-                : "";
+                      ? input.substring(firstSpace + 1)
+                      : "";
 
         assert !cmd.contains(" ") : "Command keyword contains no spaces.";
         assert cmd.length() + args.length() <= input.length() : "Length of cmd and args do not exceed length of input.";
