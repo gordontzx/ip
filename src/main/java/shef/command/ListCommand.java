@@ -19,7 +19,7 @@ public class ListCommand extends Command {
 
     @Override
     public String execute(TaskList tasks, Storage storage) {
-        return tasks.toString();
+        return "Here are the tasks in your list:\n" + tasks.toString();
     }
 
     @Override
