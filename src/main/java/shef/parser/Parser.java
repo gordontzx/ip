@@ -29,9 +29,6 @@ public class Parser {
         String cmd = parts[0];
         String args = parts[1];
 
-        assert !cmd.contains(" ") : "Command keyword contains no spaces.";
-        assert cmd.length() + args.length() <= input.length() : "Length of cmd and args do not exceed length of input.";
-
         return switch (cmd) {
         case "bye" -> new ExitCommand();
         case "list" -> new ListCommand();
@@ -62,6 +59,9 @@ public class Parser {
         String args = hasSpace && hasTrailingCharsAfterFirstSpace
                 ? input.substring(firstSpace + 1)
                 : "";
+
+        assert !cmd.contains(" ") : "Command keyword contains no spaces.";
+        assert cmd.length() + args.length() <= input.length() : "Length of cmd and args do not exceed length of input.";
 
         return new String[]{cmd, args};
     }
