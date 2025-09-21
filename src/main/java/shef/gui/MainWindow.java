@@ -30,8 +30,8 @@ public class MainWindow extends AnchorPane {
 
     private Shef shef;
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/User.png"));
-    private Image shefImage = new Image(this.getClass().getResourceAsStream("/images/gigachad.png"));
+    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/gigachad.png"));
+    private Image shefImage = new Image(this.getClass().getResourceAsStream("/images/shef.png"));
 
     /**
      * Initializes the main window.
