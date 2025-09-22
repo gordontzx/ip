@@ -69,7 +69,7 @@ You now have 2 tasks in your list.
 ```
 
 ## Adding a event task: `event`
-Adds an event type task which starts and end at specified times. <br/>
+Adds an event type task which starts and ends at specified times. <br/>
 Usage: `event TASK_NAME /from START /to END` <br/>
 <br/>
 Example: `event meeting /from 2pm /to 3pm` <br/>
@@ -106,7 +106,7 @@ Ok. I've marked this task as not done yet:
 Deletes a task by index. <br/>
 Usage: `delete TASK_INDEX` <br/>
 <br/>
-Example: `delete 5` <br/>
+Example: `delete 2` <br/>
 Example output:
 ```
 Noted. I've removed the task:
@@ -116,7 +116,7 @@ You now have 2 tasks in the list.
 
 ## Exiting the app: `bye`
 Exits and closes the app. <br/>
-Usage: `bye`
+Usage: `bye` <br/>
 Expected output:
 ```
 bye!
